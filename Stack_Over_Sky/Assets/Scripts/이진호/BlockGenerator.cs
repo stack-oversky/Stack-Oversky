@@ -11,6 +11,7 @@ public class BlockGenerator : MonoBehaviour
     public float plusHeight = 1;        //블럭 생성 높이를 올리는 변수
     public float height1 = 3;           //시작 높이
     public float height2 = 3;           //시작 높이
+    public float max_height = 3;
     float span = 0.5f;                  //딜레이
     float delta1 = 0.5f;                //초 세는 변수
     float delta2 = 0.5f;                //초 세는 변수
@@ -22,11 +23,12 @@ public class BlockGenerator : MonoBehaviour
     {
         DeltaTime();//초 세기
         CreateBlock();//블럭 생성
+        max_height = height1 > height2 ? height1 : height2;
     }
 
     void GetKEYDown1(GameObject b1)//블럭 낙하 함수
     {
-        if (Input.GetKeyDown(KeyCode.Space) && this.span < this.delta1)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             delta1 = 0.0f;
             b1.GetComponent<BlockController>().isDown = true;
@@ -37,7 +39,7 @@ public class BlockGenerator : MonoBehaviour
 
     void GetKEYDown2(GameObject b2)//블럭 낙하 함수 2
     {
-        if (Input.GetKeyDown(KeyCode.KeypadEnter) && this.span < this.delta2)
+        if (Input.GetKeyDown(KeyCode.KeypadEnter))
         {
             delta2 = 0.0f;
             b2.GetComponent<BlockController>().isDown = true;
@@ -48,7 +50,7 @@ public class BlockGenerator : MonoBehaviour
 
     void CreateBlock()
     {
-        if (blockExist1 == false)//블럭이 없을 때 bl1에 BlockController 속성을 가져와서 생성
+        if (blockExist1 == false && this.span < this.delta1)//블럭이 없을 때 bl1에 BlockController 속성을 가져와서 생성
         {
             GameObject bl1 = Instantiate(bolckPrefab) as GameObject;
             bl1.transform.position = new Vector3(-3, height1, 0);
@@ -56,7 +58,7 @@ public class BlockGenerator : MonoBehaviour
             blo1 = bl1;
             blockExist1 = true;
         }
-        if (blockExist2 == false)//블럭이 없을 때 bl2에 BlockController 속성을 가져와서 생성
+        if (blockExist2 == false && this.span < this.delta2)//블럭이 없을 때 bl2에 BlockController 속성을 가져와서 생성
         {
             GameObject bl2 = Instantiate(bolckPrefab) as GameObject;
             bl2.transform.position = new Vector3(3, height2, 0);
