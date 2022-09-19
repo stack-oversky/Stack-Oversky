@@ -5,6 +5,10 @@ using Photon.Pun;
 using TMPro;
 using Photon.Realtime;
 using UnityEngine.Jobs;
+using Hashtable = ExitGames.Client.Photon.Hashtable;
+using UnityEditor;
+using System.Threading;
+using Unity.VisualScripting;
 
 public class Launcher : MonoBehaviourPunCallbacks
 {
@@ -19,8 +23,7 @@ public class Launcher : MonoBehaviourPunCallbacks
     public GameObject roomListPanel;
     public GameObject[] createRoomButton;
     public TMP_Text[] createRoomText;
-    public RoomButton joinRoomButton;
-    public RoomButton[] joinRoomButtoon;
+    public RoomButton[] joinRoomButton;
     private List<RoomButton> allJoinRoom = new List<RoomButton>();
     public TMP_Text joinRoomText;
     private bool[] isRoomExist = new bool[3];
@@ -32,6 +35,10 @@ public class Launcher : MonoBehaviourPunCallbacks
 
     public GameObject roomPanel;
     public TMP_Text roomName;
+    private List<TMP_Text> roomPlayerName = new List<TMP_Text>();
+    public TMP_Text team1PlayerLabel;
+    public TMP_Text team2PlayerLabel;
+    public TMP_Text roomNoticeText;
 
     public GameObject nameInputPanel;
     public TMP_InputField nameInput;
@@ -49,7 +56,7 @@ public class Launcher : MonoBehaviourPunCallbacks
     {
         PhotonNetwork.JoinLobby();
         PhotonNetwork.AutomaticallySyncScene = true;
-
+        
         loadingText.text = "로비에 접속중";
     }
     // 로비 접속 성공시 실행
@@ -70,6 +77,7 @@ public class Launcher : MonoBehaviourPunCallbacks
         {
             nameInput.text = PlayerPrefs.GetString("playerName");
         }
+        PhotonNetwork.LocalPlayer.CustomProperties = new Hashtable() { { "team", 1 } };
     }
     void CloseMenu()
     {
@@ -88,7 +96,7 @@ public class Launcher : MonoBehaviourPunCallbacks
     {
         RoomOptions options = new RoomOptions();
         options.MaxPlayers = 4;
-
+        options.CustomRoomProperties = new Hashtable() { { "team1", 0 }, { "team2",0 }};
         PhotonNetwork.CreateRoom("0", options);
 
         CloseMenu();
@@ -100,9 +108,10 @@ public class Launcher : MonoBehaviourPunCallbacks
     {
         RoomOptions options = new RoomOptions();
         options.MaxPlayers = 4;
+        options.CustomRoomProperties = new Hashtable() { { "team1", 0 }, { "team2", 0 } };
 
         PhotonNetwork.CreateRoom("1", options);
-
+        
         CloseMenu();
         loadingPanel.SetActive(true);
         loadingText.text = "방 생성중";
@@ -112,6 +121,7 @@ public class Launcher : MonoBehaviourPunCallbacks
     {
         RoomOptions options = new RoomOptions();
         options.MaxPlayers = 4;
+        options.CustomRoomProperties = new Hashtable() { { "team1", 0 }, { "team2", 0 } };
 
         PhotonNetwork.CreateRoom("2", options);
 
@@ -125,6 +135,55 @@ public class Launcher : MonoBehaviourPunCallbacks
         CloseMenu();
         roomPanel.SetActive(true);
         roomName.text = PhotonNetwork.CurrentRoom.Name + "번 방 ";
+
+        Hashtable cp = PhotonNetwork.LocalPlayer.CustomProperties;
+        Hashtable cp2 = PhotonNetwork.CurrentRoom.CustomProperties;
+        if (cp2["team1"].Equals(2))
+        {
+            cp2["team2"] = cp2["team2"].GetHashCode() + 1;
+            cp["team"] = 2;
+        }
+        else
+        {
+            cp2["team1"] = cp2["team1"].GetHashCode() + 1;
+            cp["team"] = 1;
+        }
+        PhotonNetwork.LocalPlayer.SetCustomProperties(cp);
+        PhotonNetwork.CurrentRoom.SetCustomProperties(cp2);
+    }
+    public void TeamChange()
+    {
+        Hashtable cp = PhotonNetwork.LocalPlayer.CustomProperties;
+        Hashtable cp2 = PhotonNetwork.CurrentRoom.CustomProperties;
+        if (cp["team"].Equals(1))
+        {
+            if (cp2["team2"].Equals(2))
+            {
+                roomNoticeText.text = "2팀은 가득참!";
+            }
+            else
+            {
+                cp["team"] = 2;
+                cp2["team1"] = cp2["team1"].GetHashCode() - 1;
+                cp2["team2"] = cp2["team2"].GetHashCode() + 1;
+            }
+        }
+        else
+        {
+            if (cp2["team1"].Equals(2))
+            {
+                roomNoticeText.text = "1팀은 가득참!";
+            }
+            else
+            {
+                cp["team"] = 1;
+                cp2["team2"] = cp2["team2"].GetHashCode() - 1;
+                cp2["team1"] = cp2["team1"].GetHashCode() + 1;
+            }
+        }
+        PhotonNetwork.LocalPlayer.SetCustomProperties(cp);
+        PhotonNetwork.CurrentRoom.SetCustomProperties(cp2);
+        ListAllPlayer();
     }
     public void SetNickname()
     {
@@ -141,13 +200,28 @@ public class Launcher : MonoBehaviourPunCallbacks
     public void JoinRoom(RoomInfo inputinfo)
     {
         PhotonNetwork.JoinRoom(inputinfo.Name);
-
         CloseMenu();
         loadingPanel.SetActive(true);
         loadingText.text = "방 참가중";
+        Hashtable cp = PhotonNetwork.LocalPlayer.CustomProperties;
+
+
+        PhotonNetwork.LocalPlayer.SetCustomProperties(cp);
     }
+
     public void LeaveRoom()
     {
+        Hashtable cp = PhotonNetwork.LocalPlayer.CustomProperties;
+        Hashtable cp2 = PhotonNetwork.CurrentRoom.CustomProperties;
+        if (cp["team"].Equals(1))
+        {
+            cp2["team1"] = cp2["team1"].GetHashCode() - 1;
+        }
+        else
+        {
+            cp2["team2"] = cp2["team2"].GetHashCode() - 1;
+        }
+        cp["team"] = 0;
         PhotonNetwork.LeaveRoom();
         CloseMenu();
         loadingText.text = "방을 떠나는 중";
@@ -169,6 +243,7 @@ public class Launcher : MonoBehaviourPunCallbacks
             {
                 cachedRoomList.Remove(info.Name);
                 createRoomButton[int.Parse(info.Name)].SetActive(true);
+                joinRoomButton[int.Parse(info.Name)].gameObject.SetActive(false);
             }
             else
             {
@@ -179,27 +254,62 @@ public class Launcher : MonoBehaviourPunCallbacks
     }
     public void UpdateRoom(Dictionary<string, RoomInfo> cachedRoomList)
     {
-        foreach(RoomButton rb in allJoinRoom)
-        {
-            Destroy(rb.gameObject);
-        }
-        allJoinRoom.Clear();
-
-
         foreach(KeyValuePair<string, RoomInfo> roomInfo in cachedRoomList)
         {
             int index = int.Parse(roomInfo.Key);
-            joinRoomButtoon[index].SetButtonDetails(roomInfo.Value);
-            joinRoomButtoon[index].gameObject.SetActive(true);
+            joinRoomButton[index].SetButtonDetails(roomInfo.Value);
+            joinRoomButton[index].gameObject.SetActive(true);
             createRoomButton[int.Parse(roomInfo.Key)].SetActive(false);
-            allJoinRoom.Add(joinRoomButtoon[index]);
-            /*
-            RoomButton newButton = Instantiate(joinRoomButton, joinRoomButton.transform.parent);
-            newButton.SetButtonDetails(roomInfo.Value);
-            newButton.gameObject.SetActive(true);
-            createRoomButton[int.Parse(roomInfo.Key)].SetActive(false);
-            allJoinRoom.Add(newButton);
-            */
         }
     }
+    public override void OnRoomPropertiesUpdate(Hashtable propertiesThatChanged)
+    {
+        ListAllPlayer();
+    }
+    public override void OnPlayerEnteredRoom(Player newPlayer)
+    {
+        ListAllPlayer();
+    }
+    public override void OnPlayerLeftRoom(Player otherPlayer)
+    {
+        ListAllPlayer();
+    }
+    public override void OnPlayerPropertiesUpdate(Player targetPlayer, Hashtable changedProps)
+    {
+        ListAllPlayer();
+    }
+    private void ListAllPlayer()
+    {
+        foreach (TMP_Text player in roomPlayerName)
+        { 
+            Destroy(player.gameObject);
+        }
+        roomPlayerName.Clear();
+        Player[] players = PhotonNetwork.PlayerList;
+        for(int i=0;i < players.Length; i++)
+        {
+            Hashtable cp = players[i].CustomProperties;
+            if (cp["team"].Equals(1))
+            {
+                TMP_Text newPlayerLabel = Instantiate(team1PlayerLabel, team1PlayerLabel.transform.parent);
+                newPlayerLabel.text = players[i].NickName;
+                newPlayerLabel.gameObject.SetActive(true);
+                roomPlayerName.Add(newPlayerLabel);
+            }
+            else if(cp["team"].Equals(2))
+            {
+                TMP_Text newPlayerLabel = Instantiate(team2PlayerLabel, team2PlayerLabel.transform.parent);
+                newPlayerLabel.text = players[i].NickName;
+                newPlayerLabel.gameObject.SetActive(true);
+                roomPlayerName.Add(newPlayerLabel);
+            }
+            else
+            {
+                Debug.Log("error");
+            }
+            
+        }
+    }
+
+
 }
