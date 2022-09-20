@@ -43,6 +43,9 @@ public class Launcher : MonoBehaviourPunCallbacks
     public GameObject nameInputPanel;
     public TMP_InputField nameInput;
     private bool hasNickname;
+
+    public GameObject errorPanel;
+    public TMP_Text errorText;
     void Start()
     {
         CloseMenu();
@@ -86,6 +89,7 @@ public class Launcher : MonoBehaviourPunCallbacks
         loadingPanel.SetActive(false);
         nameInputPanel.SetActive(false);
         roomPanel.SetActive(false);
+        errorPanel.SetActive(false);
     }
     public void OpenLobby()
     {
@@ -129,6 +133,17 @@ public class Launcher : MonoBehaviourPunCallbacks
         loadingPanel.SetActive(true);
         loadingText.text = "방 생성중";
         isRoomExist[2] = true;
+    }
+    public override void OnCreateRoomFailed(short returnCode, string message)
+    {
+        CloseMenu();
+        errorText.text = "에러 : " + message;
+        errorPanel.SetActive(true);
+    }
+    public void CloseErrorPanel()
+    {
+        CloseMenu();
+        menubutton.SetActive(true);
     }
     public override void OnJoinedRoom()
     {
@@ -184,7 +199,11 @@ public class Launcher : MonoBehaviourPunCallbacks
         PhotonNetwork.LocalPlayer.SetCustomProperties(cp);
         PhotonNetwork.CurrentRoom.SetCustomProperties(cp2);
         ListAllPlayer();
+        TMP_Text notice = Instantiate(roomNoticeText, roomNoticeText.transform.parent);
+        notice.gameObject.SetActive(true);
+        Destroy(notice, 0.2f);
     }
+
     public void SetNickname()
     {
         if(!string.IsNullOrEmpty(nameInput.text))
@@ -262,7 +281,7 @@ public class Launcher : MonoBehaviourPunCallbacks
             createRoomButton[int.Parse(roomInfo.Key)].SetActive(false);
         }
     }
-    public override void OnRoomPropertiesUpdate(Hashtable propertiesThatChanged)
+    public override void OnPlayerPropertiesUpdate(Player targetPlayer, Hashtable changedProps)
     {
         ListAllPlayer();
     }
@@ -271,10 +290,6 @@ public class Launcher : MonoBehaviourPunCallbacks
         ListAllPlayer();
     }
     public override void OnPlayerLeftRoom(Player otherPlayer)
-    {
-        ListAllPlayer();
-    }
-    public override void OnPlayerPropertiesUpdate(Player targetPlayer, Hashtable changedProps)
     {
         ListAllPlayer();
     }
@@ -310,6 +325,9 @@ public class Launcher : MonoBehaviourPunCallbacks
             
         }
     }
-
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 
 }
