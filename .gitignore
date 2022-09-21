@@ -1,3 +1,24 @@
+cu29635/stack-over-sky-cu29635/Library/ArtifactDB
+cu29635/stack-over-sky-cu29635/Library/Bee/200b0aE.dag
+cu29635/stack-over-sky-cu29635/Library/Bee/200b0aE.dag.json
+cu29635/stack-over-sky-cu29635/Library/PackageCache/com.unity.burst@1.6.6/.Runtime/burst-llvm-10.dll
+cu29635/stack-over-sky-cu29635/Library/PackageCache/com.unity.burst@1.6.6/.Runtime/burst-llvm-11.dll
+cu29635/stack-over-sky-cu29635/Library/PackageCache/com.unity.burst@1.6.6/.Runtime/burst-llvm-43FFF67504C1B77C_12.dll
+cu29635/stack-over-sky-cu29635/Library/PackageCache/com.unity.burst@1.6.6/.Runtime/burst-llvm-43FFF67504C1B77C_13.dll
+cu29635/stack-over-sky-cu29635/Library/PackageCache/com.unity.burst@1.6.6/.Runtime/burst-llvm-B4B9E3881B00232E_11.dll
+cu29635/stack-over-sky-cu29635/Library/PackageCache/com.unity.burst@1.6.6/.Runtime/burst-llvm-B4B9E3881B00232E_12.dll
+cu29635/stack-over-sky-cu29635/Library/PackageCache/com.unity.burst@1.6.6/.Runtime/burst-llvm-B4B9E3881B00232E_13.dll
+cu29635/stack-over-sky-cu29635/Library/PackageCache/com.unity.burst@1.6.6/.Runtime/libburst-llvm-10.dylib
+cu29635/stack-over-sky-cu29635/Library/PackageCache/com.unity.burst@1.6.6/.Runtime/libburst-llvm-11.dylib
+cu29635/stack-over-sky-cu29635/Library/PackageCache/com.unity.burst@1.6.6/.Runtime/libburst-llvm-11.so
+cu29635/stack-over-sky-cu29635/Library/PackageCache/com.unity.burst@1.6.6/.Runtime/libburst-llvm-8.dylib
+cu29635/stack-over-sky-cu29635/Library/PackageCache/com.unity.burst@1.6.6/.Runtime/hostlin/dsymutil
+cu29635/stack-over-sky-cu29635/Library/PackageCache/com.unity.burst@1.6.6/.Runtime/hostlin/lld
+cu29635/stack-over-sky-cu29635/Library/PackageCache/com.unity.burst@1.6.6/.Runtime/hostmac/dsymutil
+cu29635/stack-over-sky-cu29635/Library/PackageCache/com.unity.burst@1.6.6/.Runtime/hostmac/lld
+cu29635/stack-over-sky-cu29635/Library/PackageCache/com.unity.burst@1.6.6/.Runtime/hostwin/dsymutil.exe
+cu29635/stack-over-sky-cu29635/Library/PackageCache/com.unity.burst@1.6.6/.Runtime/hostwin/lld.exe
+
 # This .gitignore file should be placed at the root of your Unity project directory
 #
 # Get latest from https://github.com/github/gitignore/blob/master/Unity.gitignore
@@ -57,4 +78,3 @@ sysinfo.txt
 
 # Crashlytics generated file
 crashlytics-build.properties
-
