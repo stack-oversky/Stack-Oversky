@@ -12,7 +12,7 @@ public class RoomButton : MonoBehaviour
     public void SetButtonDetails(RoomInfo inputinfo)
     {
         info = inputinfo;
-        buttonText.text = info.Name + "¹ø¹æ";
+        buttonText.text = info.Name;
     }
     public void OpenRoom()
     {
