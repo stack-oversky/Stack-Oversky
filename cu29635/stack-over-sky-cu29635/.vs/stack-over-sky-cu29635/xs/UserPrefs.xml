@@ -1,16 +1,16 @@
 ﻿<Properties StartupConfiguration="{6D9E1487-B1FF-9F64-844D-9736F49DBF57}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/blockmotion.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/ShootBlock.cs">
     <Files>
-      <File FileName="Assets/blockmotion.cs" Line="20" Column="36" />
-      <File FileName="Assets/ShootBlock.cs" Line="6" Column="37" />
-      <File FileName="Assets/ShootBlock_left.cs" Line="22" Column="26" />
+      <File FileName="Assets/blockmotion.cs" Line="18" Column="18" />
+      <File FileName="Assets/ShootBlock.cs" Line="19" Column="10" />
+      <File FileName="Assets/ShootBlock_left.cs" Line="4" Column="2" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="stack-over-sky-cu29635" expanded="True">
             <Node name="Assets" expanded="True">
-              <Node name="blockmotion.cs" selected="True" />
+              <Node name="ShootBlock.cs" selected="True" />
             </Node>
           </Node>
         </State>
@@ -19,7 +19,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="445b86af-9972-4751-947a-ceff202c4473" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="3ce80e28-947b-4ad7-880e-380e9725d887" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -56,9 +56,9 @@
     <Analyzer Include="/Applications/Visual Studio.app/Contents/Resources/lib/monodevelop/AddIns/MonoDevelop.Unity/Analyzers/Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets/blockmotion.cs" />
     <Compile Include="Assets/ShootBlock.cs" />
     <Compile Include="Assets/ShootBlock_left.cs" />
+    <Compile Include="Assets/blockmotion.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

@@ -17,7 +17,9 @@ public class blockmotion : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //drop direction
         Vector3 dir = Vector3.down;
+        // block position
         transform.position += dir * blockspeed * Time.deltaTime;
     }
 }
