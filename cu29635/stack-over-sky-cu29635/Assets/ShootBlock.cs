@@ -19,7 +19,7 @@ public class ShootBlock : MonoBehaviour
         }
         else 
         {   //block moves left to right
-            if (this.transform.position.x > start.x + 3 || this.transform.position.x < start.x - 3) //범위는 시작 지점으로부터 +-2
+            if (this.transform.position.x > start.x + 3 || this.transform.position.x < start.x - 3) //+-3
                 move *= -1; 
             this.transform.position += new Vector3(speed * move, 0, 0); //block position change
         }
