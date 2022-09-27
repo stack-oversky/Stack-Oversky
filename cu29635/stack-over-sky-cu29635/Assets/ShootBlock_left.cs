@@ -19,7 +19,8 @@ public class ShootBlock_left : MonoBehaviour
         }
         else
         {   //block moves left to right
-            if (this.transform.position.x > start.x + 3 || this.transform.position.x < start.x - 3)//+-3
+
+            if (this.transform.position.x > start.x + 3 || this.transform.position.x < start.x - 3) //+-
                 move *= -1;
             this.transform.position -= new Vector3(speed * move, 0, 0);
         }
