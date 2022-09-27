@@ -10,6 +10,7 @@ using UnityEditor;
 using System.Threading;
 using Unity.VisualScripting;
 using System;
+using UnityEngine.SceneManagement;
 
 public class Launcher : MonoBehaviourPunCallbacks
 {
@@ -344,6 +345,12 @@ public class Launcher : MonoBehaviourPunCallbacks
     {
 
     }
+
+    public void DummyStartGame()
+    {
+        SceneManager.LoadSceneAsync("Play Menu");
+    }
+
     public void QuitGame()
     {
         Application.Quit();
