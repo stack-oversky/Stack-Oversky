@@ -48,6 +48,8 @@ public class Launcher : MonoBehaviourPunCallbacks
 
     public GameObject roomNameInputPanel;
     public TMP_InputField roomNameInputText;
+
+    public string levelToPlay;
     void Start()
     {
         CloseMenu();
@@ -327,7 +329,7 @@ public class Launcher : MonoBehaviourPunCallbacks
             }
             
         }
-        if (cp2["team1"].Equals(2) && cp2["team2"].Equals(2)) // 게임 시작조건
+        if (cp2["team1"].Equals(1) && cp2["team2"].Equals(1)) // 게임 시작조건
         {
             if (PhotonNetwork.IsMasterClient)
             {
@@ -342,7 +344,7 @@ public class Launcher : MonoBehaviourPunCallbacks
     }
     public void StartGame()
     {
-
+        PhotonNetwork.LoadLevel(levelToPlay);
     }
     public void QuitGame()
     {
