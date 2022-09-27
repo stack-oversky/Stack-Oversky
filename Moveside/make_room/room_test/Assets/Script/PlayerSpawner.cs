@@ -13,6 +13,7 @@ public class PlayerSpawner : MonoBehaviour
     }
     public GameObject playerPrefab;
     private GameObject player;
+
     void Start()
     {
         // 플레이어 게임 시작시 플레이어 오브젝트 생성
