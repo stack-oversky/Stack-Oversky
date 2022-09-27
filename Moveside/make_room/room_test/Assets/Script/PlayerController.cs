@@ -12,12 +12,11 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
     private RaycastHit2D hit;
 
-
     PhotonView PV;
     // Start is called before the first frame update
     void Start()
     {
-        // object color 변경해보려다가 color를 동기화해주는걸 찾지 못해서 실패...
+        // Player마다 컬러를 랜덤으로 설정
         int a = Random.Range(0, 10);
         int b = Random.Range(0, 10);
         int c = Random.Range(0, 10);
@@ -41,9 +40,8 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
                 if (hit.collider != null)
                 {
-
                     GameObject clickObject = hit.collider.gameObject;
-                    clickObject.GetComponent<SquareScript>().Click(PhotonNetwork.LocalPlayer);
+                    clickObject.GetComponent<SquareScript>().Click(PhotonNetwork.LocalPlayer,color);
                 }
 
             }
@@ -56,10 +54,9 @@ public class PlayerController : MonoBehaviourPunCallbacks
     }
 
     [PunRPC]
-    public void ClickObject(int id)
+    public void ClickObject()
     {
-        if(id == 1)
-        gameObject.GetComponent<Renderer>().material.color = color;
+        GetComponent<Renderer>().material.color = color;
     }
 
     public void changeColor(GameObject gameObject)
@@ -67,4 +64,6 @@ public class PlayerController : MonoBehaviourPunCallbacks
         Debug.Log(gameObject.gameObject.name);
         gameObject.GetComponent<Renderer>().material.color = color;
     }
+
+
 }
