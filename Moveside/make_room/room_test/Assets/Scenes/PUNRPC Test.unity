@@ -132,7 +132,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1927902035590981869, guid: 72642ab48a363354fadfafbeec0d6962, type: 3}
       propertyPath: m_Name
-      value: Square 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4752161412869755796, guid: 72642ab48a363354fadfafbeec0d6962, type: 3}
       propertyPath: sceneViewId
@@ -150,6 +150,14 @@ PrefabInstance:
       propertyPath: OwnershipTransfer
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4752161412869755796, guid: 72642ab48a363354fadfafbeec0d6962, type: 3}
+      propertyPath: ObservedComponents.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4752161412869755796, guid: 72642ab48a363354fadfafbeec0d6962, type: 3}
+      propertyPath: ObservedComponents.Array.data[1]
+      value: 
+      objectReference: {fileID: 255323931}
     - target: {fileID: 6171017200452488777, guid: 72642ab48a363354fadfafbeec0d6962, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -306,7 +314,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1927902035590981869, guid: 72642ab48a363354fadfafbeec0d6962, type: 3}
       propertyPath: m_Name
-      value: Square 1 (1)
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4752161412869755796, guid: 72642ab48a363354fadfafbeec0d6962, type: 3}
       propertyPath: sceneViewId
@@ -388,7 +396,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1927902035590981869, guid: 72642ab48a363354fadfafbeec0d6962, type: 3}
       propertyPath: m_Name
-      value: Square 1 (2)
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4752161412869755796, guid: 72642ab48a363354fadfafbeec0d6962, type: 3}
       propertyPath: sceneViewId
@@ -538,7 +546,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1927902035590981869, guid: 72642ab48a363354fadfafbeec0d6962, type: 3}
       propertyPath: m_Name
-      value: Square 1 (3)
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4752161412869755796, guid: 72642ab48a363354fadfafbeec0d6962, type: 3}
       propertyPath: sceneViewId
