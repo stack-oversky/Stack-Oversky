@@ -6,16 +6,18 @@ using Photon.Realtime;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 
-public class DummyGame1 : MonoBehaviourPunCallbacks
+public class DummyGame1 : MonoBehaviourPunCallbacks, IPunObservable
 {
     int playerspeed = 10;
     Rigidbody rid2D;
-    Hashtable cp;
 
     // Start is called before the first frame update
     void Start()
     {
-        cp = PhotonNetwork.LocalPlayer.CustomProperties;
+        if (PhotonNetwork.LocalPlayer.CustomProperties["team"].Equals(2))
+        {
+            photonView.TransferOwnership(PhotonNetwork.LocalPlayer);
+        }
         rid2D = gameObject.GetComponent<Rigidbody>();
     }
 
@@ -25,8 +27,9 @@ public class DummyGame1 : MonoBehaviourPunCallbacks
         //PlayerMove();
     }
 
-    private void FixedUpdate()
+    public void FixedUpdate()
     {
+        /*
         float h = Input.GetAxisRaw("Horizontal");
         rid2D.AddForce(Vector2.right * h, ForceMode.Impulse);
 
@@ -35,25 +38,33 @@ public class DummyGame1 : MonoBehaviourPunCallbacks
 
         else if (rid2D.velocity.x < -3)
             rid2D.velocity = new Vector2(-3, rid2D.velocity.y);
-
+        */
     }
 
     public void PlayerMove()
     {
-        /*
-        //AddForce() 함수로 물리효과를 이용해서 이동
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (photonView.IsMine && PhotonNetwork.LocalPlayer.CustomProperties["team"].Equals(2))
         {
-            rid2D.AddForce(new Vector2(playerspeed, 0), ForceMode.Force);
+            //AddForce() 함수로 물리효과를 이용해서 이동
+            if (Input.GetKey(KeyCode.RightArrow))
+            {
+                rid2D.AddForce(new Vector2(playerspeed, 0), ForceMode.Force);
+            }
+            if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                rid2D.AddForce(new Vector2(-playerspeed, 0), ForceMode.Force);
+            }
+            if (Input.GetButtonDown("Jump"))
+            {
+                rid2D.AddForce(Vector2.up * 12, ForceMode.Impulse);
+            }
         }
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            rid2D.AddForce(new Vector2(-playerspeed, 0), ForceMode.Force);
-        }
-        if (Input.GetButtonDown("Jump"))
-        {
-            rid2D.AddForce(Vector2.up * 12, ForceMode.Impulse);
-        }
-        */
+        
+    }
+
+    // 자신의 색깔을 동기화해줌 Color 자료형은 전달이 안돼서 float로 전달
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        
     }
 }

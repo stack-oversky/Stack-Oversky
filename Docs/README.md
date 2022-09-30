@@ -5,6 +5,8 @@
 * [Notion Page][2]
 ----
 ### 참고자료
+#### 공통
+* [Unity 프로젝트 올리는 방법 + gitignore][6]
 #### 클라이언트
 * [UI - Button을 이용한 Scene 전환하기][5]
 #### 서버
@@ -22,3 +24,4 @@
 [3]: https://ojui.tistory.com/17
 [4]: https://citynetc.tistory.com/176
 [5]: https://art-coding3.tistory.com/32
+[6]: https://learnandcreate.tistory.com/627?category=833982
