@@ -1,6 +1,5 @@
 # Stack-Oversky
-Unity main repo
-
+Stack-Oversky는 2 vs 2 협동 경쟁 탑쌓기 게임입니다.
 
 ## 팀원
 * 서버
