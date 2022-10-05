@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class R_BlockShoot: MonoBehaviour
 {
-    public GameObject RblockPrefab; //prefab으로 사용할 L_gameobject변수
+    public GameObject RblockPrefab; //prefab으로 사용할 R_gameobject변수
     
 
     void Start()
@@ -21,12 +21,11 @@ public class R_BlockShoot: MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Return)) //Input.GetKey 메소드는 true 값을 반환. 입력받으면 true로 if문 실행
         { //Input.GetKeyDown은 키를 누르는 순간 True값 한번만 반환.
           //꾹 누르는 것이 아니라 연타를 해야 True값 여러번 반환.
-            GameObject clone=Instantiate(RblockPrefab);
-            clone.GetComponent<SpriteRenderer>().color=Color.green; //블록 떨어트리면 색깔 변하게
+
+            GameObject clone=Instantiate(RblockPrefab,curpos,Quaternion.identity);
+            clone.GetComponent<SpriteRenderer>().color=Color.red; //블록 떨어트리면 색깔 변하게
           
         }
-
-       // transform.position=curpos;
         
     }
 }

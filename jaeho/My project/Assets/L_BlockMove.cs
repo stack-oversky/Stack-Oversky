@@ -6,7 +6,7 @@ public class L_BlockMove : MonoBehaviour
 {
     Vector3 pos; //현재위치
     float leftMax=2.0f;//좌우 이동한 x 최대값
-    public int LimitY=-6; //블록 보여지는 y좌표값
+    private int LimitY=-6; //블록 보여지는 y좌표값
     public float speed=2.0f; //블록 이동속도, 후반부갈수록 빨라지면서 어려워질수도
     void Start()
     {
