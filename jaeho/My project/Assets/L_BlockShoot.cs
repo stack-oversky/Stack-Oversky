@@ -6,7 +6,7 @@ public class L_BlockShoot: MonoBehaviour
 {
     public GameObject LblockPrefab; //prefab으로 사용할 L_gameobject변수
     
-    private int LimitY=-6; //블록 보여지는 y좌표값
+    
     void Start()
     {
         

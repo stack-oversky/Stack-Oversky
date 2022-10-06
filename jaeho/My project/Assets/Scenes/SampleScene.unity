@@ -175,7 +175,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 75
+  field of view: 83
   orthographic: 0
   orthographic size: 7.2318377
   m_Depth: -1
@@ -185,7 +185,7 @@ Camera:
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
-  m_TargetEye: 0
+  m_TargetEye: 1
   m_HDR: 1
   m_AllowMSAA: 0
   m_AllowDynamicResolution: 0
@@ -220,10 +220,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4123bdba400ddd04eadaf11a248cb768, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.5
-  cameraSize: 5
-  MaxSize: 10
-  MinSize: -5
 --- !u!1 &804423868 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7832598528443794248, guid: ab650a8df7aab084f91e2dea22a8eaff, type: 3}
@@ -505,6 +501,14 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7832598528120771746, guid: ab650a8df7aab084f91e2dea22a8eaff, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7832598528120771746, guid: ab650a8df7aab084f91e2dea22a8eaff, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7832598528120771746, guid: ab650a8df7aab084f91e2dea22a8eaff, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5
       objectReference: {fileID: 0}
@@ -568,6 +572,14 @@ PrefabInstance:
     - target: {fileID: 912227830258085159, guid: c1cd7561f6845894eab367118c86a90c, type: 3}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 912227830258085159, guid: c1cd7561f6845894eab367118c86a90c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 912227830258085159, guid: c1cd7561f6845894eab367118c86a90c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 912227830258085159, guid: c1cd7561f6845894eab367118c86a90c, type: 3}
       propertyPath: m_LocalPosition.x

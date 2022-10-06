@@ -4,54 +4,39 @@ using UnityEngine;
 
 public class CameraZoomOut : MonoBehaviour
 {
+     private float TimeRepeat = 0.1f;
+     private float nextTime = 0.0f;
+///////////////////////////////
+     private float zoomSpeed = 0.1f;
+ 
+     private Camera mainCamera; //카메라 속성(값) 저장하는 변수
    
-    // public float zoomSpeed = 0.4f;
- 
-     private Camera mainCamera;
- 
-    // void Start()
-    // {
-    //     mainCamera = GetComponent<Camera>();
-    // }
+    void Start()
+    {
+        mainCamera = GetComponent<Camera>();  //카메라 속성(값) 저장하는 변수
+    }
     
-    // void Update()
-    // {
+    void Update()
+    {
+        //Time.time은 선언된 시점에서 카운트가 시작.
+        if(Time.time > nextTime){  //특정시간(TimeLeft)마다 반복
+            nextTime = Time.time + TimeRepeat;
+            Zoom();
+            }
 
-    //     Zoom();
-    // }
+    }
  
-    // private void Zoom()
-    // {   
-    //     Invoke("OnInvoke",15.0f);
-    //     //float distance = Input.GetAxis("Mouse ScrollWheel") * -1 * zoomSpeed;
-    //     float distance = -1* zoomSpeed; //-1하면 줌아웃, +1하면 줌인
-    //     if(distance != 0)
-    //     {
-    //         Invoke("OnInvoke",15.0f);
-    //         mainCamera.fieldOfView += distance;
-    //     }
-    //     distance=0;
-    // }
+    private void Zoom()  //zoom아웃하는 함수
+    {   
+        
+        float distance = 1* zoomSpeed; //-1하면 줌인, +1하면 줌아웃
+        if(distance != 0) 
+        {
+            mainCamera.fieldOfView += distance; //카메라의 수직시야
+        }
+        //distance=0;
+    }
  
-    public float speed = 0.5f; //바뀔 움직일 속도
-    public float cameraSize= 5f;  //얼만큼 카메라를 줌인 할지
- 
-//얼마만큼 증가 감소할지 설정
-public float MaxSize=10f;
-public float MinSize=-5f;
- 
-void Update() {
-    cameraSize=2.0f;
-    
-    //줌인 줌아웃 최대 최소값 설정.
-    if(cameraSize>=MaxSize)
-        cameraSize=MaxSize;
-    if(cameraSize<=MinSize)
-        cameraSize=MinSize;
- 
-    mainCamera.orthographicSize=Mathf.Lerp(mainCamera.orthographicSize,cameraSize,Time.deltaTime/speed);
-    //Time.deltaTime*2 의 시간만큼 값의 변화를 준다.
-}
 
 
 }
