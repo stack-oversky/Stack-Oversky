@@ -41,11 +41,11 @@ public class PlayerController : MonoBehaviourPunCallbacks
             }
             else if (PhotonNetwork.LocalPlayer.CustomProperties["team"].Equals(1))
             {
-               block1.GetComponent<DummyGame>().PlayerMove();
+               block1.GetComponent<DummyGame>().PlayerMove(PhotonNetwork.LocalPlayer);
             }
             else if (PhotonNetwork.LocalPlayer.CustomProperties["team"].Equals(2))
             {
-                block2.GetComponent<DummyGame1>().PlayerMove();
+                block2.GetComponent<DummyGame1>().PlayerMove(PhotonNetwork.LocalPlayer);
             }
 
         }

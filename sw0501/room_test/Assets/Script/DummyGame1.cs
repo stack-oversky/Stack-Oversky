@@ -41,9 +41,9 @@ public class DummyGame1 : MonoBehaviourPunCallbacks, IPunObservable
         */
     }
 
-    public void PlayerMove()
+    public void PlayerMove(Player player)
     {
-        if (photonView.IsMine && PhotonNetwork.LocalPlayer.CustomProperties["team"].Equals(2))
+        if (photonView.IsMine && player.CustomProperties["team"].Equals(2))
         {
             //AddForce() 함수로 물리효과를 이용해서 이동
             if (Input.GetKey(KeyCode.RightArrow))
