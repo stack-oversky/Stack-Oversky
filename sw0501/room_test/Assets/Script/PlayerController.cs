@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
             }
             else if (PhotonNetwork.LocalPlayer.CustomProperties["team"].Equals(1))
             {
-               block1.GetComponent<DummyGame>().PlayerMove(PhotonNetwork.LocalPlayer);
+                block1.GetComponent<DummyGame>().PlayerMove(PhotonNetwork.LocalPlayer);
             }
             else if (PhotonNetwork.LocalPlayer.CustomProperties["team"].Equals(2))
             {
@@ -73,8 +73,8 @@ public class PlayerController : MonoBehaviourPunCallbacks
             
 
             
-        }
-    */
+        }*/
+
     }
     [PunRPC]
     public void ClickObject(int id)
