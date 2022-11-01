@@ -348,7 +348,8 @@ public class Launcher : MonoBehaviourPunCallbacks
 
     public void DummyStartGame()
     {
-        SceneManager.LoadSceneAsync("Play Menu");
+        //SceneManager.LoadSceneAsync("Play Menu");
+        SceneManager.LoadSceneAsync("main_game");
     }
 
     public void QuitGame()

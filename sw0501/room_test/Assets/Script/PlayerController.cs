@@ -31,7 +31,21 @@ public class PlayerController : MonoBehaviourPunCallbacks
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (PhotonNetwork.LocalPlayer.CustomProperties["team"].Equals(1))
+            {
+                //block1.GetComponent<user1_block>().BlockShoot(PhotonNetwork.LocalPlayer);
+                BlockShoot(1);
+            }
+            else if (PhotonNetwork.LocalPlayer.CustomProperties["team"].Equals(2))
+            {
+                //block2.GetComponent<user2_block>().BlockShoot(PhotonNetwork.LocalPlayer);
+                BlockShoot(2);
+            }
+        }
+
+        /*
         if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.LeftArrow) || Input.GetButtonDown("Jump"))
         {
             
@@ -41,7 +55,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
             }
             else if (PhotonNetwork.LocalPlayer.CustomProperties["team"].Equals(1))
             {
-               block1.GetComponent<DummyGame>().PlayerMove(PhotonNetwork.LocalPlayer);
+                block1.GetComponent<DummyGame>().PlayerMove(PhotonNetwork.LocalPlayer);
             }
             else if (PhotonNetwork.LocalPlayer.CustomProperties["team"].Equals(2))
             {
@@ -49,6 +63,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
             }
 
         }
+        */
 
         /*
         if (photonView.IsMine)
@@ -73,8 +88,8 @@ public class PlayerController : MonoBehaviourPunCallbacks
             
 
             
-        }
-    */
+        }*/
+
     }
     [PunRPC]
     public void ClickObject(int id)
@@ -87,5 +102,23 @@ public class PlayerController : MonoBehaviourPunCallbacks
     {
         Debug.Log(gameObject.gameObject.name);
         gameObject.GetComponent<Renderer>().material.color = color;
+    }
+
+    public void BlockShoot(int i)
+    {
+        
+        //Debug.Log(block.gameObject.name);
+        if (i == 1)
+        {
+            GameObject block = GameObject.Find("user1");
+            Debug.Log(block.name);
+            block.GetComponent<user1_block>().BlockShoot();
+        }
+        else if (i == 2)
+        {
+            GameObject block = GameObject.Find("user2");
+            Debug.Log(block.name);
+            block.GetComponent<user2_block>().BlockShoot();
+        }
     }
 }
