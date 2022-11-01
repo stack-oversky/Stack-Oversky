@@ -16,10 +16,8 @@ public class user2_block : MonoBehaviourPunCallbacks
 
     public void BlockShoot()
     {
-
-        Debug.Log("User2 Space");
-        GameObject block = PhotonNetwork.Instantiate("block", Vector3.zero, Quaternion.identity, 0);
-        block.transform.position = blockPosition.transform.position;
+        //Create PhotonNetwork Object -> management with Photonview
+        GameObject block = PhotonNetwork.Instantiate("block", blockPosition.transform.position, Quaternion.identity, 0);
         
     }
 
@@ -36,12 +34,15 @@ public class user2_block : MonoBehaviourPunCallbacks
     void Start()
     {
         start = this.transform.position;
+
+        //움직이는 것이 아니기 때문에 PhotonView 고정시킬 필요 없음
         /*
         if (PhotonNetwork.LocalPlayer.CustomProperties["team"].Equals(2))
         {
             photonView.TransferOwnership(PhotonNetwork.LocalPlayer);
         }
         */
+
     }
 
     // Update is called once per frame
