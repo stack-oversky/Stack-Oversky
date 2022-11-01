@@ -3909,6 +3909,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2669717982068726814, guid: 7b133f4bfefa5d543bfa0b2d8ab1f423, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2669717982068726814, guid: 7b133f4bfefa5d543bfa0b2d8ab1f423, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1304872487}
@@ -3917,11 +3921,19 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2669717982068726814, guid: 7b133f4bfefa5d543bfa0b2d8ab1f423, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2669717982068726814, guid: 7b133f4bfefa5d543bfa0b2d8ab1f423, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: DummyStartGame
       objectReference: {fileID: 0}
     - target: {fileID: 2669717982068726814, guid: 7b133f4bfefa5d543bfa0b2d8ab1f423, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Launcher, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2669717982068726814, guid: 7b133f4bfefa5d543bfa0b2d8ab1f423, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: Launcher, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2669717982068726814, guid: 7b133f4bfefa5d543bfa0b2d8ab1f423, type: 3}
