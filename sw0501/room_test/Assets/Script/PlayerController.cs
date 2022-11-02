@@ -31,7 +31,25 @@ public class PlayerController : MonoBehaviourPunCallbacks
     // Update is called once per frame
     void Update()
     {
-        
+        //if Input Space Key -> RUN RPC Function
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            //LocalPlayer team = 1
+            if (PhotonNetwork.LocalPlayer.CustomProperties["team"].Equals(1))
+            {
+                //block1.GetComponent<user1_block>().BlockShoot();
+                BlockShoot(1);
+            }
+            //LocalPlayer team = 2
+            else if (PhotonNetwork.LocalPlayer.CustomProperties["team"].Equals(2))
+            {
+                //block2.GetComponent<user2_block>().BlockShoot();
+                BlockShoot(2);
+            }
+        }
+
+        //DummyGame Key Function
+        /*
         if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.LeftArrow) || Input.GetButtonDown("Jump"))
         {
             
@@ -41,7 +59,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
             }
             else if (PhotonNetwork.LocalPlayer.CustomProperties["team"].Equals(1))
             {
-               block1.GetComponent<DummyGame>().PlayerMove(PhotonNetwork.LocalPlayer);
+                block1.GetComponent<DummyGame>().PlayerMove(PhotonNetwork.LocalPlayer);
             }
             else if (PhotonNetwork.LocalPlayer.CustomProperties["team"].Equals(2))
             {
@@ -49,7 +67,9 @@ public class PlayerController : MonoBehaviourPunCallbacks
             }
 
         }
+        */
 
+        //MoveSide Function
         /*
         if (photonView.IsMine)
         {
@@ -73,8 +93,8 @@ public class PlayerController : MonoBehaviourPunCallbacks
             
 
             
-        }
-    */
+        }*/
+
     }
     [PunRPC]
     public void ClickObject(int id)
@@ -87,5 +107,24 @@ public class PlayerController : MonoBehaviourPunCallbacks
     {
         Debug.Log(gameObject.gameObject.name);
         gameObject.GetComponent<Renderer>().material.color = color;
+    }
+
+    //Find Object and Run BlockShoot Func
+    public void BlockShoot(int i)
+    {
+        
+        //Debug.Log(block.gameObject.name);
+        if (i == 1)
+        {
+            GameObject block = GameObject.Find("user1");
+            Debug.Log(block.name);
+            block.GetComponent<user1_block>().BlockShoot();
+        }
+        else if (i == 2)
+        {
+            GameObject block = GameObject.Find("user2");
+            Debug.Log(block.name);
+            block.GetComponent<user2_block>().BlockShoot();
+        }
     }
 }
