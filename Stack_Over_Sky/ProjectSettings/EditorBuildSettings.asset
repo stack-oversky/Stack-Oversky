@@ -5,7 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/OverScene.unity
+    guid: fea50c6497121f24d83cb0e9c6076970
+  - enabled: 1
+    path: Assets/Scenes/GameScene_iyaho_.unity
+    guid: dba4d1a2a7153d4469e4226d1449a828
   m_configObjects: {}
