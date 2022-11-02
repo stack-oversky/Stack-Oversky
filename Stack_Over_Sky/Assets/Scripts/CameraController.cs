@@ -23,7 +23,6 @@ public class CameraController : MonoBehaviour
     {
         if (collision.tag == "Drop")
         {
-            //Debug.Log("Enter");
             cam.transform.position += new Vector3(0, 0.02f, 0);
         }
     }
@@ -32,7 +31,6 @@ public class CameraController : MonoBehaviour
     {
         if (collision.tag == "Drop")
         {
-            //Debug.Log("Stay");
             cam.transform.position += new Vector3(0, 0.2f, 0);
         }
     }

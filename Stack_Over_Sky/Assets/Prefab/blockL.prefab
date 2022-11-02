@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 271438926923379481}
   - component: {fileID: 271438926923379480}
   - component: {fileID: 271438926923379495}
-  - component: {fileID: 7427145031737493560}
+  - component: {fileID: 1386700303991474207}
   m_Layer: 0
   m_Name: blockL
   m_TagString: Untagged
@@ -134,7 +134,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
---- !u!114 &7427145031737493560
+--- !u!114 &1386700303991474207
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,12 +143,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 271438926923379494}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b05a2c1bfb762f74898eab2b84bcc6ee, type: 3}
+  m_Script: {fileID: 11500000, guid: ebf41acdb2792524c96190ea0698e93c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   blockLimitY: -10
   sign: 1
-  speed: 0.07
+  speed: 0.1
   downSpeed: 0.1
   moveSpeed: {x: 0.05, y: 0, z: 0}
   isDrop: 0
