@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameOverFlip : MonoBehaviour
 {
     public int maxDead = 10;
+    public static int dead = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +16,7 @@ public class GameOverFlip : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (BlockController.Dropped > maxDead)
+        if (dead > maxDead)
             SceneManager.LoadScene("OverScene");
     }
 }

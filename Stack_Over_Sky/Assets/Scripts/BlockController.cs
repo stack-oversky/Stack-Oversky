@@ -8,9 +8,7 @@ public class BlockController : MonoBehaviour
     public int sign = 1;                    //블록 방향 (양수면 오른쪽, 음수면 왼쪽)
     public float speed = 0.1f;              //블록이 움직이는 속도
     public float downSpeed = 0.1f;
-    public Vector3 moveSpeed = new Vector3(0.05f, 0, 0);
     bool crash = false;
-    public static int Dropped = 0;
     public bool isDrop = false;             //블록을 떨어뜨릴지 말지 조정하는 변수
     private Rigidbody2D rigid;              //RibidBody 속성 조정용 변수
     public Vector3 startPos;                //시작 좌표
@@ -44,28 +42,28 @@ public class BlockController : MonoBehaviour
             {
                 this.transform.position -= new Vector3(0, downSpeed, 0);
                 
-                if (blocktype == blockType.Lblock)
-                {
-                    if (Input.GetKey(KeyCode.A))
-                    {
-                        this.transform.position -= moveSpeed;
-                    }
-                    if (Input.GetKey(KeyCode.D))
-                    {
-                        this.transform.position += moveSpeed;
-                    }
-                }
-                if (blocktype == blockType.Rblock)
-                {
-                    if (Input.GetKey(KeyCode.Keypad4))
-                    {
-                        this.transform.position -= moveSpeed;
-                    }
-                    if (Input.GetKey(KeyCode.Keypad6))
-                    {
-                        this.transform.position += moveSpeed;   
-                    }
-                }   
+                //if (blocktype == blockType.Lblock)
+                //{
+                //    if (Input.GetKey(KeyCode.A))
+                //    {
+                //        this.transform.position -= moveSpeed;
+                //    }
+                //    if (Input.GetKey(KeyCode.D))
+                //    {
+                //        this.transform.position += moveSpeed;
+                //    }
+                //}
+                //if (blocktype == blockType.Rblock)
+                //{
+                //    if (Input.GetKey(KeyCode.Keypad4))
+                //    {
+                //        this.transform.position -= moveSpeed;
+                //    }
+                //    if (Input.GetKey(KeyCode.Keypad6))
+                //    {
+                //        this.transform.position += moveSpeed;   
+                //    }
+                //}   
             }
         }
         else//블럭 움직임
@@ -80,8 +78,8 @@ public class BlockController : MonoBehaviour
         if(this.transform.position.y < blockLimitY)
         {
             Destroy(gameObject);
-            Dropped++;
-            Debug.Log(Dropped);
+            GameOverFlip.dead++;
+            Debug.Log("deadBlock" + GameOverFlip.dead);
         }
     }
 
