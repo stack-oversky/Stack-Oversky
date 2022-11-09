@@ -41,29 +41,6 @@ public class BlockController : MonoBehaviour
             if(!crash)
             {
                 this.transform.position -= new Vector3(0, downSpeed, 0);
-                
-                //if (blocktype == blockType.Lblock)
-                //{
-                //    if (Input.GetKey(KeyCode.A))
-                //    {
-                //        this.transform.position -= moveSpeed;
-                //    }
-                //    if (Input.GetKey(KeyCode.D))
-                //    {
-                //        this.transform.position += moveSpeed;
-                //    }
-                //}
-                //if (blocktype == blockType.Rblock)
-                //{
-                //    if (Input.GetKey(KeyCode.Keypad4))
-                //    {
-                //        this.transform.position -= moveSpeed;
-                //    }
-                //    if (Input.GetKey(KeyCode.Keypad6))
-                //    {
-                //        this.transform.position += moveSpeed;   
-                //    }
-                //}   
             }
         }
         else//블럭 움직임

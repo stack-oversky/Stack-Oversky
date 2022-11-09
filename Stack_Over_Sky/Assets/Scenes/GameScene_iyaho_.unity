@@ -356,6 +356,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 9036206582755135944, guid: d641b8746da0b7f4480f214658286f7f, type: 3}
+      propertyPath: m_Offset.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9036206582755135945, guid: d641b8746da0b7f4480f214658286f7f, type: 3}
       propertyPath: m_AngularDrag
       value: 0
@@ -366,7 +370,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9036206582755135947, guid: d641b8746da0b7f4480f214658286f7f, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.33
+      value: 0.72
       objectReference: {fileID: 0}
     - target: {fileID: 9036206582755135947, guid: d641b8746da0b7f4480f214658286f7f, type: 3}
       propertyPath: m_LocalScale.y
@@ -378,7 +382,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9036206582755135947, guid: d641b8746da0b7f4480f214658286f7f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.95
+      value: -3.12
       objectReference: {fileID: 0}
     - target: {fileID: 9036206582755135947, guid: d641b8746da0b7f4480f214658286f7f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -693,8 +697,9 @@ GameObject:
   - component: {fileID: 1832923196}
   - component: {fileID: 1832923198}
   - component: {fileID: 1832923197}
+  - component: {fileID: 1832923199}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Count_Dead
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -817,3 +822,15 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1832923195}
   m_CullTransparentMesh: 1
+--- !u!114 &1832923199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1832923195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1ddac0ac08d1cb4db937eeb61b795c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

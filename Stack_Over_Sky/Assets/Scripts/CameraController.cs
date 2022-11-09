@@ -10,12 +10,16 @@ public class CameraController : MonoBehaviour
 
     void Start()
     {
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if(cam.transform.position.y > 0)
+        {
+            cam.transform.position -= new Vector3(0, 0.5f, 0);
+        }
     }
 
     //Drop 태그인 블럭이 콜라이더에 닿았을때 카메라를 위로 이동

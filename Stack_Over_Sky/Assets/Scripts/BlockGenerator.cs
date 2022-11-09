@@ -5,8 +5,8 @@ using UnityEngine;
 public class BlockGenerator : MonoBehaviour
 {
     // Start is called before the first frame update
-    public GameObject bolckPrefabL;          //블럭 프리팹 저장변수
-    public GameObject bolckPrefabR;          //블럭 프리팹 저장변수
+    public GameObject bolckPrefabL;         //블럭 프리팹 저장변수
+    public GameObject bolckPrefabR;         //블럭 프리팹 저장변수
     GameObject saveIdleBlock1;              //생성된 idle 블럭 저장용
     GameObject saveIdleBlock2;              //위와 같음
     public float plusHeight = 1;            //블럭 생성 높이를 올리는 변수
