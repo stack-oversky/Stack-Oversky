@@ -148,9 +148,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blockLimitY: -10
   sign: 1
-  speed: 0.1
-  downSpeed: 0.1
-  moveSpeed: {x: 0.05, y: 0, z: 0}
+  speed: 3
+  downSpeed: 5
   isDrop: 0
   startPos: {x: 0, y: 0, z: 0}
-  blocktype: 1
+  blocktype: 2

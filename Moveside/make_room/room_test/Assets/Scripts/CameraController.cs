@@ -7,6 +7,7 @@ public class CameraController : MonoBehaviour
     // Start is called before the first frame update
     
     public Camera cam;          //Ä«¸Þ¶ó
+    public static float y = 0;
 
     void Start()
     {
@@ -24,6 +25,7 @@ public class CameraController : MonoBehaviour
         if (collision.tag == "Drop")
         {
             cam.transform.position += new Vector3(0, 0.02f, 0);
+            y = cam.transform.position.y;
         }
     }
 
@@ -32,6 +34,7 @@ public class CameraController : MonoBehaviour
         if (collision.tag == "Drop")
         {
             cam.transform.position += new Vector3(0, 0.2f, 0);
+            y = cam.transform.position.y;
         }
     }
 }

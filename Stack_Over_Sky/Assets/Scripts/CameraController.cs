@@ -18,7 +18,7 @@ public class CameraController : MonoBehaviour
     {
         if(cam.transform.position.y > 0)
         {
-            cam.transform.position -= new Vector3(0, 0.5f, 0);
+            //cam.transform.position -= new Vector3(0, 0.5f, 0);
         }
     }
 
@@ -27,7 +27,7 @@ public class CameraController : MonoBehaviour
     {
         if (collision.tag == "Drop")
         {
-            cam.transform.position += new Vector3(0, 0.02f, 0);
+            cam.transform.position += new Vector3(0, 2f * Time.deltaTime, 0);
         }
     }
 
@@ -35,7 +35,7 @@ public class CameraController : MonoBehaviour
     {
         if (collision.tag == "Drop")
         {
-            cam.transform.position += new Vector3(0, 0.2f, 0);
+            cam.transform.position += new Vector3(0, 2f * Time.deltaTime, 0);
         }
     }
 }
