@@ -5,7 +5,7 @@ using UnityEngine;
 public class block_motion : MonoBehaviour
 {
     //떨어지는 속도
-    public float blockspeed = 3;
+    public float blockspeed = 1;
 
 
     // Start is called before the first frame update
