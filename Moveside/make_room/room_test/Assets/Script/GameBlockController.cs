@@ -39,28 +39,6 @@ public class GameBlockController : MonoBehaviour
         if (!crash)
         {
             this.transform.position -= new Vector3(0, downSpeed, 0) * Time.deltaTime;
-            //if (blocktype == blockType.Lblock)
-            //{
-            //    if (Input.GetKey(KeyCode.A))
-            //    {
-            //        this.transform.position -= moveSpeed;
-            //    }
-            //    if (Input.GetKey(KeyCode.D))
-            //    {
-            //        this.transform.position += moveSpeed;
-            //    }
-            //}
-            //if (blocktype == blockType.Rblock)
-            //{
-            //    if (Input.GetKey(KeyCode.Keypad4))
-            //    {
-            //        this.transform.position -= moveSpeed;
-            //    }
-            //    if (Input.GetKey(KeyCode.Keypad6))
-            //    {
-            //        this.transform.position += moveSpeed;   
-            //    }
-            //}   
         }
     }
     void Under()//일정 y좌표 이하 내려갈시 오브젝트 삭제

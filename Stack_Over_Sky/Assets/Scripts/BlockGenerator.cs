@@ -5,8 +5,8 @@ using UnityEngine;
 public class BlockGenerator : MonoBehaviour
 {
     // Start is called before the first frame update
-    public GameObject bolckPrefabL;          //블럭 프리팹 저장변수
-    public GameObject bolckPrefabR;          //블럭 프리팹 저장변수
+    public GameObject bolckPrefabL;         //블럭 프리팹 저장변수
+    public GameObject bolckPrefabR;         //블럭 프리팹 저장변수
     GameObject saveIdleBlock1;              //생성된 idle 블럭 저장용
     GameObject saveIdleBlock2;              //위와 같음
     public float plusHeight = 1;            //블럭 생성 높이를 올리는 변수
@@ -22,6 +22,7 @@ public class BlockGenerator : MonoBehaviour
     {
         DeltaTime();//초 세기
         CreateBlock();//블럭 생성
+        FixBlock();
     }
 
     void BlockDown_L(GameObject b1)//블럭 낙하 함수
@@ -49,8 +50,9 @@ public class BlockGenerator : MonoBehaviour
         if (isBlockExist1 == false && this.span < this.delta1)//블럭이 없을 때 saveIdleBlock1에 BlockController 속성을 가져와서 생성
         {
             GameObject idelBlock = Instantiate(bolckPrefabL) as GameObject;
-            idelBlock.transform.position = new Vector3(-3.5f, cam.transform.position.y + 3f, 0);
+            idelBlock.transform.position = new Vector3(-3.8f, cam.transform.position.y + 3f, 0);
             idelBlock.GetComponent<BlockController>().startPos = new Vector3(-3, cam.transform.position.y + 3f, 0);
+            idelBlock.GetComponent<BlockController>().tag = "SelectedL";
             saveIdleBlock1 = idelBlock;
             isBlockExist1 = true;
         }
@@ -60,8 +62,9 @@ public class BlockGenerator : MonoBehaviour
         if (isBlockExist2 == false && this.span < this.delta2)//블럭이 없을 때 saveIdleBlock2에 BlockController 속성을 가져와서 생성
         {
             GameObject idelBlock = Instantiate(bolckPrefabR) as GameObject;
-            idelBlock.transform.position = new Vector3(3.5f, cam.transform.position.y + 3f, 0);
+            idelBlock.transform.position = new Vector3(3.8f, cam.transform.position.y + 3f, 0);
             idelBlock.GetComponent<BlockController>().startPos = new Vector3(3, cam.transform.position.y + 3f, 0);
+            idelBlock.GetComponent<BlockController>().tag = "SelectedR";
             idelBlock.GetComponent<BlockController>().sign *= -1;
             saveIdleBlock2 = idelBlock;
             isBlockExist2 = true;
@@ -74,5 +77,20 @@ public class BlockGenerator : MonoBehaviour
     {
         delta1 += Time.deltaTime;
         delta2 += Time.deltaTime;
+    }
+
+    void FixBlock()
+    {
+        GameObject selected;
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            selected = GameObject.FindWithTag("SelectedL");
+            selected.GetComponent<BlockController>().isFix = true;
+        }
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            selected = GameObject.FindWithTag("SelectedR");
+            selected.GetComponent<BlockController>().isFix = true;
+        }
     }
 }

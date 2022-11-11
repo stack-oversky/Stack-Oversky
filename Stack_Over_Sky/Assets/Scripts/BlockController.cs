@@ -12,7 +12,8 @@ public class BlockController : MonoBehaviour
     public bool isDrop = false;             //블록을 떨어뜨릴지 말지 조정하는 변수
     private Rigidbody2D rigid;              //RibidBody 속성 조정용 변수
     public Vector3 startPos;                //시작 좌표
-
+    public bool isFix = false;
+    
     //타입 지정하려고 만듬
     public enum blockType
     {
@@ -40,37 +41,17 @@ public class BlockController : MonoBehaviour
         {
             if(!crash)
             {
-                this.transform.position -= new Vector3(0, downSpeed, 0);
-                
-                //if (blocktype == blockType.Lblock)
-                //{
-                //    if (Input.GetKey(KeyCode.A))
-                //    {
-                //        this.transform.position -= moveSpeed;
-                //    }
-                //    if (Input.GetKey(KeyCode.D))
-                //    {
-                //        this.transform.position += moveSpeed;
-                //    }
-                //}
-                //if (blocktype == blockType.Rblock)
-                //{
-                //    if (Input.GetKey(KeyCode.Keypad4))
-                //    {
-                //        this.transform.position -= moveSpeed;
-                //    }
-                //    if (Input.GetKey(KeyCode.Keypad6))
-                //    {
-                //        this.transform.position += moveSpeed;   
-                //    }
-                //}   
+                this.transform.position -= new Vector3(0, downSpeed * Time.deltaTime, 0);
             }
         }
         else//블럭 움직임
         {
-            if (this.transform.position.x > startPos.x + 2 || this.transform.position.x < startPos.x - 2) //범위는 시작 지점으로부터 +-2
-                sign *= -1;
-            this.transform.position += new Vector3(speed * sign, 0, 0);
+            if (this.transform.position.x > startPos.x + 2)
+                sign = -1;
+            if (this.transform.position.x < startPos.x - 2) //범위는 시작 지점으로부터 +-2
+                sign = 1;
+            if ((this.tag == "SelectedL" || this.tag == "SelectedR") && isFix == false)
+                this.transform.position += new Vector3(speed * sign * Time.deltaTime, 0, 0);
         }
     }
     void Under()//일정 y좌표 이하 내려갈시 오브젝트 삭제
