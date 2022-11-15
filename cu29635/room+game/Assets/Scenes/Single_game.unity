@@ -153,6 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   User_block: {fileID: 1840714719}
+  blockContainer: {fileID: 0}
 --- !u!4 &151159469
 Transform:
   m_ObjectHideFlags: 0
@@ -777,7 +778,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f3709c3227b14e67aaa7fb1b5ea135e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blockspeed: 3
 --- !u!114 &1840714722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -796,7 +796,10 @@ MonoBehaviour:
   move: 0.1
   speed: 0.05
   up: 1
+  blockContainer: {fileID: 0}
   cnt: 0
+  cnt_drop: 0
+  cnt_drop_check: 0
 --- !u!50 &1840714723
 Rigidbody2D:
   serializedVersion: 4
