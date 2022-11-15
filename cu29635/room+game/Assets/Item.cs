@@ -4,8 +4,18 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
-    public GameObject User_block; //기본 블록 오브젝트 불러오기 
-   // public float speed =GameObject.Find("user1").GetComponent<user1_block>().speed; //기본 블록 오브젝트 스피드 변수 불러오기
+    public GameObject User_block; //기본 블록 오브젝트 불러오기
+    public GameObject blockContainer;
+
+
+    //모든 블록프리팹 제거
+    public void DestroyAllBlocks()
+    {
+        var blocks = new List<GameObject>();
+        foreach (Transform child in blockContainer.transform) blocks.Add(child.gameObject);
+        blocks.ForEach(child => Destroy(child));
+    }
+
 
     // Start is called before the first frame update
     void Start()
@@ -33,5 +43,13 @@ public class Item : MonoBehaviour
 
         }
 
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            DestroyAllBlocks();
+            
+            User_block.transform.position = new Vector3(0, 2.6f, 0);
+        }
+
     }
+    
 }

@@ -14,11 +14,12 @@ public class user1_block : MonoBehaviour
     Rigidbody2D rig2d;
     int k = 1;
     GameObject block;
+    public GameObject blockContainer; //block prefab 저장 및 관리하는 변수
 
     public int cnt;
     public int cnt_drop;
     public int cnt_drop_check;
-    // Start is called before the first frame update
+    
 
     private void BlockMove()
     {
@@ -30,7 +31,9 @@ public class user1_block : MonoBehaviour
             k = 0;
             block.transform.position = blockPosition.transform.position;
 
-           
+            block.name = "block num : " + cnt;
+            block.transform.parent = blockContainer.transform;  //blockContainer에 블록 프리팹 저
+            
         }
         else
         {
@@ -40,7 +43,7 @@ public class user1_block : MonoBehaviour
         }
 
 
-        if (cnt > 7 && k == 0)
+        if (cnt > 7 && k == 0)  //블록이 7개 이상 생성 된 이후 블록이 생성될 때마다
         {
             //this.transform.position += new Vector3(0, 1, 0);
             for (int i = 0; i < 100; i++)
@@ -55,6 +58,10 @@ public class user1_block : MonoBehaviour
 
     }
 
+    
+
+
+    //블록이 사라지면 카메라도 밑으로 이동하는 함ㅠ
     private void CameraDown()
     {
         if (cnt_drop==cnt_drop_check)

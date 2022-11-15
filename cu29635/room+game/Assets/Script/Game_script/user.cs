@@ -19,23 +19,31 @@ public class user : MonoBehaviour
     void Update()
     {
         Rigidbody2D myRigidbody = GetComponent<Rigidbody2D>();
+        this.GetComponent<SpriteRenderer>().color = Color.blue; //블록 떨어트리면 색깔 변하게
+
         // myRigidbody.useGravity = true; //떨어지는 속도 일정  *
+
     }
 
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-         
-        //if (con != 0) 규리누나 코드 주석처리
+        if (collision.gameObject.name == "rm")
+        {
+            GameObject.Find("user1").GetComponent<user1_block>().cnt_drop++;
+            Destroy(gameObject);
+        }
+
+        //if (con != 0) cu29 코드 주석처리
         //{
-            //con = 0;
-            //GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            //GetComponent<Transform>().position += new Vector3(0, 0, 0);
-            // Debug.Log(con);
+        //con = 0;
+        //GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        //GetComponent<Transform>().position += new Vector3(0, 0, 0);
+        // Debug.Log(con);
         //}
 
 
-        //score 떨어지는 순간이 아니라 쌓일 때 점수 업데이트 하기 위해 태그 지정
+        //score 떨어지는 순간이 아니라 쌓일 때 점수 업데이트 하기 위해 태그 지
         //if (collision.collider.gameObject.CompareTag("Ground"))
         //{
         //    GameObject.Find("user1").GetComponent<user1_block>().cnt++;
@@ -52,11 +60,5 @@ public class user : MonoBehaviour
         //    Destroy(gameObject);
         //}
 
-        if (collision.gameObject.name == "rm")
-        {
-            GameObject.Find("user1").GetComponent<user1_block>().cnt_drop++;
-            Destroy(gameObject);
-        }
-        
     }
 }
