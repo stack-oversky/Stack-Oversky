@@ -14,10 +14,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PUNRPC Test.unity
     guid: affbdeaf30d3a3d4fa7e3c1459d6a91a
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/GameScene_iyaho_.unity
     guid: 520dbcdd55bcb3c4a99e13964519bf16
   - enabled: 1
     path: Assets/Scenes/OverScene.unity
     guid: fea50c6497121f24d83cb0e9c6076970
+  - enabled: 1
+    path: Assets/Scenes/GameScene.unity
+    guid: 4443646f04ffaa64da1de31f28867dad
   m_configObjects: {}

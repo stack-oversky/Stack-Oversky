@@ -5,15 +5,17 @@ TagManager:
   serializedVersion: 2
   tags:
   - Drop
+  - Dropping
+  - Dropped
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Block
   - Water
   - UI
-  - 
-  - 
+  - UUU
+  - BackGround
   - 
   - 
   - 
@@ -39,6 +41,18 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: BackGround
+    uniqueID: 1361332605
+    locked: 0
+  - name: Block
+    uniqueID: 4243997993
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: UUU
+    uniqueID: 692553221
+    locked: 0
+  - name: UI
+    uniqueID: 1469066211
     locked: 0
