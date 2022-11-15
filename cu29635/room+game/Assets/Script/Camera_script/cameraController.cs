@@ -10,7 +10,7 @@ public class cameraController : MonoBehaviour
 
     private void Update()
     {
-        Vector3 dir = block.transform.position - this.transform.position + new Vector3(0,-2.6f,0);
+        Vector3 dir = block.transform.position - this.transform.position + new Vector3(0, -2.6f, 0);
         Vector3 moveVector = new Vector3(0, dir.y * cameraSpeed * Time.deltaTime, 0.0f);
         this.transform.Translate(moveVector);
     }
