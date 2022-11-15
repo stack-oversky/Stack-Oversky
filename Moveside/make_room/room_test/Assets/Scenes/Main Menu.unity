@@ -4631,7 +4631,7 @@ MonoBehaviour:
   errorText: {fileID: 621131096}
   roomNameInputPanel: {fileID: 383954924}
   roomNameInputText: {fileID: 809881244}
-  levelToPlay: GameScene_iyaho_
+  levelToPlay: GameScene
 --- !u!1 &1364060971
 GameObject:
   m_ObjectHideFlags: 0
