@@ -48,6 +48,11 @@ public class Item : MonoBehaviour
             DestroyAllBlocks();
             
             User_block.transform.position = new Vector3(0, 2.6f, 0);
+            User_block.GetComponent<user1_block>().cnt = 0;
+            User_block.GetComponent<user1_block>().cnt_drop = 0;
+            User_block.GetComponent<user1_block>().cnt_drop_check = 1;
+
+
         }
 
     }

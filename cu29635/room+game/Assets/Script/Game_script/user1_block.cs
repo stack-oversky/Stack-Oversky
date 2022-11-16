@@ -55,6 +55,16 @@ public class user1_block : MonoBehaviour
             //rig2d.AddForce(new Vector2(start.x,1), ForceMode2D.Force);
 
         }
+        /*
+        else if (k == 0&&cnt- cnt_drop_check>7)
+        {
+            //this.transform.position += new Vector3(0, 1, 0);
+            for (int i = 0; i < 100; i++)
+            {
+                this.transform.position += new Vector3(0, -1 * up * Time.deltaTime, 0);
+            }
+            k = 1;
+        }*/
 
     }
 
