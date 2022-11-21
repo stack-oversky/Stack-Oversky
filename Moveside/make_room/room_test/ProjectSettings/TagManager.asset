@@ -16,7 +16,7 @@ TagManager:
   - UI
   - UUU
   - BackGround
-  - 
+  - ResultUI
   - 
   - 
   - 
@@ -55,4 +55,7 @@ TagManager:
     locked: 0
   - name: UI
     uniqueID: 1469066211
+    locked: 0
+  - name: ResultUI
+    uniqueID: 4172757477
     locked: 0
