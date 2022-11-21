@@ -5,7 +5,7 @@ using Photon.Pun;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
 using System;
 using Object = System.Object;
-using System.Diagnostics;
+
 
 public class GamePlayerController : MonoBehaviourPunCallbacks , IPunObservable
 {
@@ -13,6 +13,7 @@ public class GamePlayerController : MonoBehaviourPunCallbacks , IPunObservable
     private GameManager gameManager;
     GameObject[] player;
     GameObject otherPlayer;
+    Photon.Realtime.Player othPlayer;
 
     public Object[] objects = new Object[2];
     public Camera cam;
@@ -22,6 +23,10 @@ public class GamePlayerController : MonoBehaviourPunCallbacks , IPunObservable
     private int inputIndex;
 
     private List<GameObject> currentblocks = new List<GameObject>();
+
+    private bool isGameRun;
+
+    private float recordTime = 2f;
     void Start()
     {
         if (photonView.IsMine)
@@ -31,9 +36,9 @@ public class GamePlayerController : MonoBehaviourPunCallbacks , IPunObservable
             gameManager = gameManagerObject.GetComponent<GameManager>();
             cam = gameManager.cam;
             otherCam = gameManager.otherCam;
+            isGameRun = true;
 
             StartCoroutine(FindPlayer());
-
             StartCoroutine(printBlock());
         }
     }
@@ -64,10 +69,11 @@ public class GamePlayerController : MonoBehaviourPunCallbacks , IPunObservable
                 GameObject newBlock = PhotonNetwork.Instantiate("Block", 
                     myBlocks[i].gameObject.transform.position + viewPos,
                     myBlocks[i].gameObject.transform.rotation);
+                newBlock.transform.localScale = myBlocks[i].transform.localScale;
                 currentblocks.Add(newBlock);
             }
 
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.5f);
 
             PhotonNetwork.Destroy(viewSeeSaw);
             for (int i = 0; i < currentblocks.Count; i++)
@@ -85,6 +91,7 @@ public class GamePlayerController : MonoBehaviourPunCallbacks , IPunObservable
             if (!player[i].GetPhotonView().IsMine)
             {
                 otherPlayer = player[i];
+                othPlayer = otherPlayer.GetPhotonView().Controller;
             }
         }
     }
@@ -109,6 +116,14 @@ public class GamePlayerController : MonoBehaviourPunCallbacks , IPunObservable
                 StartCoroutine(DefenseSlow());
             }
             SelectPlayer();
+            SaveScore();
+            if (gameManager.gameTime <= 0 && isGameRun)
+            {
+
+                isGameRun = false;
+                StartCoroutine(GameEndPlayer());
+
+            }
         }
     }
     public void SelectPlayer()
@@ -214,6 +229,36 @@ public class GamePlayerController : MonoBehaviourPunCallbacks , IPunObservable
         {
             gameManager.slowBlock(playerIndex);
         }
+    }
+    public void SaveScore()
+    {
+        Hashtable cp = PhotonNetwork.LocalPlayer.CustomProperties;
+        cp["score"] = gameManager.score.ToString();
+        PhotonNetwork.LocalPlayer.SetCustomProperties(cp);
+        Debug.Log(gameManager.score.ToString());
+    }
+    public IEnumerator GameEndPlayer()
+    {
+        gameManager.uiText.text = "Time's Up!";
+        Time.timeScale = 0;
+        yield return new WaitForSecondsRealtime(1f);
+        string team1Score, team2Score;
+        string team1Name, team2Name;
+        if (PhotonNetwork.LocalPlayer.CustomProperties["team"].Equals(1))
+        {
+            team1Score = (string)PhotonNetwork.LocalPlayer.CustomProperties["score"];
+            team2Score = (string)othPlayer.CustomProperties["score"];
+            team1Name = PhotonNetwork.LocalPlayer.NickName;
+            team2Name = othPlayer.NickName;
+        }
+        else
+        {
+            team2Score = (string)PhotonNetwork.LocalPlayer.CustomProperties["score"];
+            team1Score = (string)othPlayer.CustomProperties["score"];
+            team2Name = PhotonNetwork.LocalPlayer.NickName;
+            team1Name = othPlayer.NickName;
+        }
+        gameManager.GameEnd(team1Score, team2Score,team1Name,team2Name);
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)

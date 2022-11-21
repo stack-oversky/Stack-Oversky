@@ -85,7 +85,7 @@ public class Launcher : MonoBehaviourPunCallbacks
         {
             nameInput.text = PlayerPrefs.GetString("playerName");
         }
-        PhotonNetwork.LocalPlayer.CustomProperties = new Hashtable() { { "team", 0 } };
+        PhotonNetwork.LocalPlayer.CustomProperties = new Hashtable() { { "team", 0 }, { "score", "0" } };
     }
     public void SetNickname()
     {
