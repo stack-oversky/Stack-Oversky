@@ -997,7 +997,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f3709c3227b14e67aaa7fb1b5ea135e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blockspeed: 3
 --- !u!114 &1840714722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1214,5 +1213,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 803496591200140e598224205c23e5f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraSpeed: 5
+  cameraSpeed: 1
   block: {fileID: 1840714719}
