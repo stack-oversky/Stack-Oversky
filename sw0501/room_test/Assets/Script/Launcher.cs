@@ -36,6 +36,8 @@ public class Launcher : MonoBehaviourPunCallbacks
     private List<TMP_Text> roomPlayerName = new List<TMP_Text>();
     public TMP_Text team1PlayerLabel;
     public TMP_Text team2PlayerLabel;
+    public TMP_Text team3PlayerLabel;
+    public TMP_Text team4PlayerLabel;
     public TMP_Text waitPlayerLabel;
     public TMP_Text roomNoticeText;
     public GameObject startButton;
@@ -165,7 +167,7 @@ public class Launcher : MonoBehaviourPunCallbacks
         {
             RoomOptions options = new RoomOptions();
             options.MaxPlayers = 4;
-            options.CustomRoomProperties = new Hashtable() { { "team1", 0 }, { "team2", 0 }};
+            options.CustomRoomProperties = new Hashtable() { { "team1", 0 }, { "team2", 0 }, { "team3", 0 }, { "team4", 0} };
             
             PhotonNetwork.CreateRoom(roomNameInputText.text, options);
 
@@ -220,7 +222,7 @@ public class Launcher : MonoBehaviourPunCallbacks
         Hashtable cp2 = PhotonNetwork.CurrentRoom.CustomProperties;
         if (!cp["team"].Equals(1))
         {
-            if (cp2["team1"].Equals(2))
+            if (cp2["team1"].Equals(1))
             {
                 TMP_Text newText = Instantiate(roomNoticeText, roomNoticeText.transform.parent);
                 newText.text = "1팀이 가득참!";
@@ -241,7 +243,7 @@ public class Launcher : MonoBehaviourPunCallbacks
         Hashtable cp2 = PhotonNetwork.CurrentRoom.CustomProperties;
         if (!cp["team"].Equals(2))
         {
-            if (cp2["team2"].Equals(2))
+            if (cp2["team2"].Equals(1))
             {
                 TMP_Text newText = Instantiate(roomNoticeText, roomNoticeText.transform.parent);
                 newText.text = "2팀이 가득참!";
@@ -252,6 +254,50 @@ public class Launcher : MonoBehaviourPunCallbacks
             else
             {
                 cp["team"] = 2;
+                PhotonNetwork.LocalPlayer.SetCustomProperties(cp);
+            }
+        }
+    }
+
+    public void MoveTeam3()
+    {
+        Hashtable cp = PhotonNetwork.LocalPlayer.CustomProperties;
+        Hashtable cp2 = PhotonNetwork.CurrentRoom.CustomProperties;
+        if (!cp["team"].Equals(3))
+        {
+            if (cp2["team3"].Equals(1))
+            {
+                TMP_Text newText = Instantiate(roomNoticeText, roomNoticeText.transform.parent);
+                newText.text = "3팀이 가득참!";
+                newText.gameObject.SetActive(true);
+
+                Destroy(newText, 2f);
+            }
+            else
+            {
+                cp["team"] = 3;
+                PhotonNetwork.LocalPlayer.SetCustomProperties(cp);
+            }
+        }
+    }
+
+    public void MoveTeam4()
+    {
+        Hashtable cp = PhotonNetwork.LocalPlayer.CustomProperties;
+        Hashtable cp2 = PhotonNetwork.CurrentRoom.CustomProperties;
+        if (!cp["team"].Equals(4))
+        {
+            if (cp2["team4"].Equals(1))
+            {
+                TMP_Text newText = Instantiate(roomNoticeText, roomNoticeText.transform.parent);
+                newText.text = "4팀이 가득참!";
+                newText.gameObject.SetActive(true);
+
+                Destroy(newText, 2f);
+            }
+            else
+            {
+                cp["team"] = 4;
                 PhotonNetwork.LocalPlayer.SetCustomProperties(cp);
             }
         }
@@ -297,8 +343,11 @@ public class Launcher : MonoBehaviourPunCallbacks
         Hashtable cp2 = PhotonNetwork.CurrentRoom.CustomProperties;
         cp2["team1"] = 0;
         cp2["team2"] = 0;
+        cp2["team3"] = 0;
+        cp2["team4"] = 0;
+
         // 플레이어 상태마다 currentRoom 값을 변경
-        for(int i=0;i < players.Length; i++)
+        for (int i=0;i < players.Length; i++)
         {
             Hashtable cp = players[i].CustomProperties;
             if (cp["team"].Equals(1)) // team1
@@ -319,6 +368,24 @@ public class Launcher : MonoBehaviourPunCallbacks
 
                 cp2["team2"] = cp2["team2"].GetHashCode() + 1;
             }
+            else if (cp["team"].Equals(3)) // team3
+            {
+                TMP_Text newPlayerLabel = Instantiate(team3PlayerLabel, team3PlayerLabel.transform.parent);
+                newPlayerLabel.text = players[i].NickName;
+                newPlayerLabel.gameObject.SetActive(true);
+                roomPlayerName.Add(newPlayerLabel);
+
+                cp2["team3"] = cp2["team3"].GetHashCode() + 1;
+            }
+            else if (cp["team"].Equals(4)) // team4
+            {
+                TMP_Text newPlayerLabel = Instantiate(team4PlayerLabel, team4PlayerLabel.transform.parent);
+                newPlayerLabel.text = players[i].NickName;
+                newPlayerLabel.gameObject.SetActive(true);
+                roomPlayerName.Add(newPlayerLabel);
+
+                cp2["team4"] = cp2["team4"].GetHashCode() + 1;
+            }
             else // 대기
             {
                 TMP_Text newPlayerLabel = Instantiate(waitPlayerLabel, waitPlayerLabel.transform.parent);
@@ -328,7 +395,7 @@ public class Launcher : MonoBehaviourPunCallbacks
             }
             
         }
-        if (cp2["team1"].Equals(2) && cp2["team2"].Equals(2)) // 게임 시작조건
+        if (cp2["team1"].Equals(1) && cp2["team2"].Equals(1) && cp2["team3"].Equals(1) && cp2["team4"].Equals(1)) // 게임 시작조건
         {
             if (PhotonNetwork.IsMasterClient)
             {
@@ -343,13 +410,13 @@ public class Launcher : MonoBehaviourPunCallbacks
     }
     public void StartGame()
     {
-
+        SceneManager.LoadSceneAsync("main_game");
     }
 
     public void DummyStartGame()
     {
         //SceneManager.LoadSceneAsync("Play Menu");
-        SceneManager.LoadSceneAsync("main_game");
+        //SceneManager.LoadSceneAsync("main_game");
     }
 
     public void QuitGame()

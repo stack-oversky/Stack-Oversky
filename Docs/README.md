@@ -12,6 +12,7 @@
 #### 서버
 * [유니티 Photon 서버 연결하기][3]
 * [포톤 클라우드 계정 생성하기][4]
+* [네트워크 객체 생성 및 설정하기][7]
 
 ----
 #### 기타
@@ -25,3 +26,4 @@
 [4]: https://citynetc.tistory.com/176
 [5]: https://art-coding3.tistory.com/32
 [6]: https://learnandcreate.tistory.com/627?category=833982
+[7]: https://doc.photonengine.com/ko-kr/pun/current/gameplay/instantiation

@@ -173,6 +173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+
   m_Material: {fileID: 0}
   m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_RaycastTarget: 1
@@ -197,6 +198,8 @@ MonoBehaviour:
   m_Text: "[ITEM]\nQ\t: SpeedUp\nW\t: SpeedDown\nR\t: DeleteAllBlocks"
 --- !u!222 &94398879
 CanvasRenderer:
+
+  
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1015,7 +1018,9 @@ MonoBehaviour:
   move: 0.1
   speed: 0.05
   up: 1
+
   blockContainer: {fileID: 293942860}
+ 
   cnt: 0
   cnt_drop: 0
   cnt_drop_check: 0
