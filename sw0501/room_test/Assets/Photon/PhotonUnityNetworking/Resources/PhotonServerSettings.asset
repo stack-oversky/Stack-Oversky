@@ -37,6 +37,7 @@ MonoBehaviour:
   - ClickRpc
   - DestroyRpc
   - ClickObject
+  - BlockShoot
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 0

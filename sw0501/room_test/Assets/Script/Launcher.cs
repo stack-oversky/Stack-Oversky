@@ -395,7 +395,7 @@ public class Launcher : MonoBehaviourPunCallbacks
             }
             
         }
-        if (cp2["team1"].Equals(1) && cp2["team2"].Equals(1) && cp2["team3"].Equals(1) && cp2["team4"].Equals(1)) // 게임 시작조건
+        if (cp2["team1"].Equals(1) && cp2["team2"].Equals(1) /*&& cp2["team3"].Equals(1) && cp2["team4"].Equals(1)*/) // 게임 시작조건
         {
             if (PhotonNetwork.IsMasterClient)
             {
@@ -410,7 +410,7 @@ public class Launcher : MonoBehaviourPunCallbacks
     }
     public void StartGame()
     {
-        SceneManager.LoadSceneAsync("main_game");
+        SceneManager.LoadSceneAsync("Single_Game");
     }
 
     public void DummyStartGame()

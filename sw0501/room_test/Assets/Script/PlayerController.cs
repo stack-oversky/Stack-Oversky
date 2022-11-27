@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviourPunCallbacks
     private Color color;
     public GameObject block1;
     public GameObject block2;
+    public GameObject block3;
+    public GameObject block4;
 
     private RaycastHit2D hit;
 
@@ -19,13 +21,9 @@ public class PlayerController : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     void Start()
     {
-        // object color 변경해보려다가 color를 동기화해주는걸 찾지 못해서 실패...
-        int a = Random.Range(0, 10);
-        int b = Random.Range(0, 10);
-        int c = Random.Range(0, 10);
-        color = new Color(a / 10f, b / 10f, c / 10f);
         camera = Camera.main;
         PV = photonView;
+        
     }
 
     // Update is called once per frame
@@ -45,6 +43,18 @@ public class PlayerController : MonoBehaviourPunCallbacks
             {
                 //block2.GetComponent<user2_block>().BlockShoot();
                 BlockShoot(2);
+            }
+            //LocalPlayer team = 2
+            else if (PhotonNetwork.LocalPlayer.CustomProperties["team"].Equals(3))
+            {
+                //block2.GetComponent<user2_block>().BlockShoot();
+                BlockShoot(3);
+            }
+            //LocalPlayer team = 2
+            else if (PhotonNetwork.LocalPlayer.CustomProperties["team"].Equals(4))
+            {
+                //block2.GetComponent<user2_block>().BlockShoot();
+                BlockShoot(4);
             }
         }
 
@@ -97,17 +107,6 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
     }
     [PunRPC]
-    public void ClickObject(int id)
-    {
-        if (id == 1)
-            gameObject.GetComponent<Renderer>().material.color = color;
-    }
-
-    public void changeColor(GameObject gameObject)
-    {
-        Debug.Log(gameObject.gameObject.name);
-        gameObject.GetComponent<Renderer>().material.color = color;
-    }
 
     //Find Object and Run BlockShoot Func
     public void BlockShoot(int i)
@@ -116,15 +115,19 @@ public class PlayerController : MonoBehaviourPunCallbacks
         //Debug.Log(block.gameObject.name);
         if (i == 1)
         {
-            GameObject block = GameObject.Find("user1");
-            Debug.Log(block.name);
-            block.GetComponent<user1_block>().BlockShoot();
+            block1.GetComponent<user1_block_prev>().BlockShoot();
         }
         else if (i == 2)
         {
-            GameObject block = GameObject.Find("user2");
-            Debug.Log(block.name);
-            block.GetComponent<user2_block>().BlockShoot();
+            block2.GetComponent<user1_block_prev>().BlockShoot();
+        }
+        else if (i == 3)
+        {
+            block3.GetComponent<user1_block_prev>().BlockShoot();
+        }
+        else if (i == 4)
+        {
+            block4.GetComponent<user1_block_prev>().BlockShoot();
         }
     }
 }
