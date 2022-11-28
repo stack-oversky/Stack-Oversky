@@ -34,31 +34,5 @@ public class user : MonoBehaviour
             Destroy(gameObject);
         }
 
-        //if (con != 0) cu29 코드 주석처리
-        //{
-        //con = 0;
-        //GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-        //GetComponent<Transform>().position += new Vector3(0, 0, 0);
-        // Debug.Log(con);
-        //}
-
-
-        //score 떨어지는 순간이 아니라 쌓일 때 점수 업데이트 하기 위해 태그 지
-        //if (collision.collider.gameObject.CompareTag("Ground"))
-        //{
-        //    GameObject.Find("user1").GetComponent<user1_block>().cnt++;
-        //}
-
-        //else if (collision.collider.gameObject.CompareTag("Add"))
-        //{
-        //    GameObject.Find("user1").GetComponent<user1_block>().cnt++;
-        //}
-
-        //else if (collision.collider.gameObject.CompareTag("Drop"))
-        //{
-        //    GameObject.Find("user1").GetComponent<user1_block>().cnt_drop++;
-        //    Destroy(gameObject);
-        //}
-
     }
 }
