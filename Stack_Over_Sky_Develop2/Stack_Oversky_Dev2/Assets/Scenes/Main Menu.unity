@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657815, g: 0.49641192, b: 0.57481617, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -158,7 +158,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -900, y: 175}
+  m_AnchoredPosition: {x: -787, y: 169.8}
   m_SizeDelta: {x: 487.016, y: 565.606}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &119583213
@@ -1510,11 +1510,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3512934388734216449, guid: 7b133f4bfefa5d543bfa0b2d8ab1f423, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -894
+      value: -780.51
       objectReference: {fileID: 0}
     - target: {fileID: 3512934388734216449, guid: 7b133f4bfefa5d543bfa0b2d8ab1f423, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -63
+      value: -63.003
       objectReference: {fileID: 0}
     - target: {fileID: 3512934388734216449, guid: 7b133f4bfefa5d543bfa0b2d8ab1f423, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2015,7 +2015,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 900, y: 179}
+  m_AnchoredPosition: {x: 849.99994, y: 179}
   m_SizeDelta: {x: 487.016, y: 565.606}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &605048433
@@ -2578,7 +2578,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3512934388734216449, guid: 7b133f4bfefa5d543bfa0b2d8ab1f423, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -900
+      value: -787
       objectReference: {fileID: 0}
     - target: {fileID: 3512934388734216449, guid: 7b133f4bfefa5d543bfa0b2d8ab1f423, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -3397,7 +3397,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 900, y: -317}
+  m_AnchoredPosition: {x: 862.9799, y: -317}
   m_SizeDelta: {x: 487.016, y: 565.606}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &794001890
@@ -5095,7 +5095,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 69.05
+  m_fontSize: 71.35
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -5162,8 +5162,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -11.005408, y: -88}
-  m_SizeDelta: {x: 1810.667, y: 100}
+  m_AnchoredPosition: {x: -11.005408, y: -89.664}
+  m_SizeDelta: {x: 1810.667, y: 103.329}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1503593832
 GameObject:
@@ -5401,7 +5401,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3512934388734216449, guid: 7b133f4bfefa5d543bfa0b2d8ab1f423, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 900
+      value: 850
       objectReference: {fileID: 0}
     - target: {fileID: 3512934388734216449, guid: 7b133f4bfefa5d543bfa0b2d8ab1f423, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -6106,7 +6106,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -894, y: -302}
+  m_AnchoredPosition: {x: -787, y: -295.81}
   m_SizeDelta: {x: 487.016, y: 565.606}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1818088031
@@ -6706,7 +6706,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0054169, y: 0.000045776}
+  m_AnchoredPosition: {x: -0.0000034105, y: 0.000045776}
   m_SizeDelta: {x: 2915.3, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2062606948
@@ -7058,7 +7058,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3512934388734216449, guid: 7b133f4bfefa5d543bfa0b2d8ab1f423, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 900
+      value: 862.98
       objectReference: {fileID: 0}
     - target: {fileID: 3512934388734216449, guid: 7b133f4bfefa5d543bfa0b2d8ab1f423, type: 3}
       propertyPath: m_AnchoredPosition.y
