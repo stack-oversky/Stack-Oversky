@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BlockController : MonoBehaviour
+public class BlockController2 : MonoBehaviour
 {
     public float dropSpeed = 4f;
     private Rigidbody2D rigid;
@@ -51,7 +51,7 @@ public class BlockController : MonoBehaviour
     {
         if (this.transform.position.y <= -10)
         {
-            gameManager.blocks.Remove(this.gameObject);
+            gameManager.blocks2.Remove(this.gameObject);
             gameManager.droppedBlocks.Remove(this.gameObject);
             Destroy(this.gameObject);
         }

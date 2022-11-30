@@ -21,7 +21,7 @@ public class CameraManager : MonoBehaviour
     {
         if(collision.tag == "Dropped")
         {
-            this.transform.position += new Vector3(0, upSpeed * Time.deltaTime, 0); 
+
         }
     }
 
@@ -29,7 +29,7 @@ public class CameraManager : MonoBehaviour
     {
         if (collision.tag == "Dropped")
         {
-            this.transform.position += new Vector3(0, upSpeed * Time.deltaTime, 0);
+
         }
     }
 }

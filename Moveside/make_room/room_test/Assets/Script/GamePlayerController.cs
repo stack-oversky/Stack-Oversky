@@ -5,9 +5,10 @@ using Photon.Pun;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
 using System;
 using Object = System.Object;
+using Random = UnityEngine.Random;
+using UnityEngine.SceneManagement;
 
-
-public class GamePlayerController : MonoBehaviourPunCallbacks , IPunObservable
+public class GamePlayerController : MonoBehaviourPunCallbacks
 {
     private GameObject gameManagerObject;
     private GameManager gameManager;
@@ -27,6 +28,13 @@ public class GamePlayerController : MonoBehaviourPunCallbacks , IPunObservable
     private bool isGameRun;
 
     private float recordTime = 2f;
+    private int takeItem = 1;
+    private int player1Item = -1;
+    private bool isItemPlayer1 = false;
+    private int player2Item = -1;
+    private bool isItemPlayer2 = false;
+
+
     void Start()
     {
         if (photonView.IsMine)
@@ -38,8 +46,50 @@ public class GamePlayerController : MonoBehaviourPunCallbacks , IPunObservable
             otherCam = gameManager.otherCam;
             isGameRun = true;
 
+
             StartCoroutine(FindPlayer());
             StartCoroutine(printBlock());
+        }
+    }
+    void Update()
+    {
+
+        if (photonView.IsMine)
+        {
+            if(Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                UseItemPlayer1();
+            }
+            if (Input.GetKeyDown(KeyCode.RightShift))
+            {
+                UseItemPlayer2();
+            }
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                AttackStop();
+            }
+            else if (Input.GetKeyDown(KeyCode.W))
+            {
+                AttackFast();
+            }
+            else if (Input.GetKeyDown(KeyCode.E))
+            {
+                AttackBig();
+            }
+            else if (Input.GetKeyDown(KeyCode.R))
+            {
+                StartCoroutine(DefenseSlow());
+            }
+            SelectPlayer();
+            SetItem();
+            if(isGameRun) SaveScore();
+            if (gameManager.gameTime <= 0 && isGameRun)
+            {
+
+                isGameRun = false;
+                StartCoroutine(GameEndPlayer());
+
+            }
         }
     }
     public IEnumerator printBlock()
@@ -66,13 +116,21 @@ public class GamePlayerController : MonoBehaviourPunCallbacks , IPunObservable
                 seeSaw.transform.rotation);
             for(int i=0;i<myBlocks.Count;i++)
             {
-                GameObject newBlock = PhotonNetwork.Instantiate("Block", 
+                GameObject newBlock = PhotonNetwork.Instantiate("LBlock", 
                     myBlocks[i].gameObject.transform.position + viewPos,
                     myBlocks[i].gameObject.transform.rotation);
                 newBlock.transform.localScale = myBlocks[i].transform.localScale;
                 currentblocks.Add(newBlock);
             }
-
+            List<GameObject> myBlocks2 = gameManager.blocks2;
+            for (int i = 0; i < myBlocks2.Count; i++)
+            {
+                GameObject newBlock = PhotonNetwork.Instantiate("RBlock",
+                    myBlocks2[i].gameObject.transform.position + viewPos,
+                    myBlocks2[i].gameObject.transform.rotation);
+                newBlock.transform.localScale = myBlocks2[i].transform.localScale;
+                currentblocks.Add(newBlock);
+            }
             yield return new WaitForSeconds(0.5f);
 
             PhotonNetwork.Destroy(viewSeeSaw);
@@ -95,37 +153,7 @@ public class GamePlayerController : MonoBehaviourPunCallbacks , IPunObservable
             }
         }
     }
-    void Update()
-    {
-        if (photonView.IsMine)
-        {
-            if (Input.GetKeyDown(KeyCode.Q))
-            {
-                StartCoroutine(AttackStop());
-            }
-            else if (Input.GetKeyDown(KeyCode.W))
-            {
-                StartCoroutine(AttackFast());
-            }
-            else if (Input.GetKeyDown(KeyCode.E))
-            {
-                StartCoroutine(AttackBig());
-            }
-            else if (Input.GetKeyDown(KeyCode.R))
-            {
-                StartCoroutine(DefenseSlow());
-            }
-            SelectPlayer();
-            SaveScore();
-            if (gameManager.gameTime <= 0 && isGameRun)
-            {
 
-                isGameRun = false;
-                StartCoroutine(GameEndPlayer());
-
-            }
-        }
-    }
     public void SelectPlayer()
     {
         if (!isSelect)
@@ -145,42 +173,21 @@ public class GamePlayerController : MonoBehaviourPunCallbacks , IPunObservable
             }
         }
     }
-    public IEnumerator AttackStop()
+    public void AttackStop()
     {
-        isSelect = false;
-        int playerIndex = -1;
-        while(!isSelect)
-        {
-            yield return new WaitForEndOfFrame();
-        }
-        playerIndex = inputIndex;
-        gameManager.uiText.text = "";
+        int playerIndex = Random.Range(1,3);
         
         otherPlayer.GetPhotonView().RPC("StopBlock", RpcTarget.All, playerIndex);
     }
-    public IEnumerator AttackFast()
+    public void AttackFast()
     {
-        isSelect = false;
-        int playerIndex = -1;
-        while (!isSelect)
-        {
-            yield return new WaitForEndOfFrame();
-        }
-        playerIndex = inputIndex;
-        gameManager.uiText.text = "";
+        int playerIndex = Random.Range(1, 3);
 
         otherPlayer.GetPhotonView().RPC("FastBlock", RpcTarget.All, playerIndex);
     }
-    public IEnumerator AttackBig()
+    public void AttackBig()
     {
-        isSelect = false;
-        int playerIndex = -1;
-        while (!isSelect)
-        {
-            yield return new WaitForEndOfFrame();
-        }
-        playerIndex = inputIndex;
-        gameManager.uiText.text = "";
+        int playerIndex = Random.Range(1, 3);
 
         otherPlayer.GetPhotonView().RPC("BigBlock", RpcTarget.All, playerIndex);
     }
@@ -190,6 +197,7 @@ public class GamePlayerController : MonoBehaviourPunCallbacks , IPunObservable
         if(photonView.IsMine)
         {
             gameManager.stopBlock(playerIndex);
+
         }
     }
     [PunRPC]
@@ -237,6 +245,74 @@ public class GamePlayerController : MonoBehaviourPunCallbacks , IPunObservable
         PhotonNetwork.LocalPlayer.SetCustomProperties(cp);
         Debug.Log(gameManager.score.ToString());
     }
+    public void SetItem()
+    {
+        if(takeItem*2 <=gameManager.score)
+        {
+            if (!isItemPlayer1)
+            {
+                player1Item = Random.Range(1, 5);
+                gameManager.itemSprite1[player1Item - 1].SetActive(true);
+                isItemPlayer1 = true;
+            }
+            if (!isItemPlayer2)
+            {
+                player2Item = Random.Range(1, 5);
+                gameManager.itemSprite2[player2Item - 1].SetActive(true);
+                isItemPlayer2 = true;
+            }
+            takeItem++;
+        }
+    }
+    public void UseItemPlayer1()
+    {
+        if (isItemPlayer1)
+        {
+            if (player1Item == 1)
+            {
+                AttackStop();
+            }
+            else if (player1Item == 2)
+            {
+                AttackBig();
+            }
+            else if (player1Item == 3)
+            {
+                AttackFast();
+            }
+            else if (player1Item == 4)
+            {
+                SlowBlock(1);
+            }
+            gameManager.itemSprite1[player1Item - 1].SetActive(false);
+            isItemPlayer1 = false;
+        }
+    }
+    public void UseItemPlayer2()
+    {
+        if (isItemPlayer2)
+        {
+            if (player2Item == 1)
+            {
+                AttackStop();
+            }
+            else if (player2Item == 2)
+            {
+                AttackBig();
+            }
+            else if (player2Item == 3)
+            {
+                AttackFast();
+            }
+            else if (player2Item == 4)
+            {
+                SlowBlock(2);
+            }
+            gameManager.itemSprite2[player2Item - 1].SetActive(false);
+            isItemPlayer2 = false;
+        }
+    }
+
     public IEnumerator GameEndPlayer()
     {
         gameManager.uiText.text = "Time's Up!";
@@ -259,10 +335,24 @@ public class GamePlayerController : MonoBehaviourPunCallbacks , IPunObservable
             team1Name = othPlayer.NickName;
         }
         gameManager.GameEnd(team1Score, team2Score,team1Name,team2Name);
+        while(!gameManager.goLobby)
+        {
+            yield return new WaitForSecondsRealtime(0.1f);
+        }
+        if (PhotonNetwork.IsMasterClient)
+        {
+            PhotonNetwork.DestroyAll();
+        }
+
+        PhotonNetwork.AutomaticallySyncScene = false;
+        PhotonNetwork.LeaveRoom();
+        SceneManager.LoadScene(0);
+
+    }
+    public override void OnLeftRoom()
+    {
+        base.OnLeftRoom();
+
     }
 
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    {
-        
-    }
 }
