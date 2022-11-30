@@ -15,6 +15,8 @@ public class ChatManager1 : MonoBehaviourPunCallbacks
 
     public TMP_InputField MsgInputField;
 
+    public GameObject iOb;
+    bool ibit = false;
 
     string UserName;
 
@@ -29,6 +31,7 @@ public class ChatManager1 : MonoBehaviourPunCallbacks
             ballon[i].SetActive(false);
             text[i].text = "";
         }
+        iOb.SetActive(false);
     }
 
 
@@ -36,20 +39,23 @@ public class ChatManager1 : MonoBehaviourPunCallbacks
     // Update is called once per frame
     void Update()
     {
-        
-        if (MsgInputField.text.Equals(""))
+
+        if (ibit)
         {
-            if (Input.GetKeyDown(KeyCode.Return) && MsgInputField.isFocused == false)
+            if (Input.GetKeyDown(KeyCode.Return))
             {
-                MsgInputField.ActivateInputField();                            
+                SendMessage();
+                iOb.SetActive(false);
+                ibit = false;
             }
         }
         else
         {
             if (Input.GetKeyDown(KeyCode.Return))
             {
-                SendMessage();
-                MsgInputField.DeactivateInputField();
+                iOb.SetActive(true);
+                MsgInputField.ActivateInputField();
+                ibit = true;
             }
         }
         
@@ -59,6 +65,8 @@ public class ChatManager1 : MonoBehaviourPunCallbacks
     {
         int tid = Launcher.Instance.rTeamNum();
         string msg = MsgInputField.text;
+
+        if (msg.Equals("")) return;
 
         string color = "<color=black>";
         if (tid == 1) color = "<color=blue>";
