@@ -10,6 +10,7 @@ public class ScoreUpdate : MonoBehaviour
     
     public Text myScore;
     int score = 0;
+    public int score_pu = 0;
 
 
     void Start()
@@ -28,7 +29,7 @@ public class ScoreUpdate : MonoBehaviour
 
         score = GameObject.Find("user" + PhotonNetwork.LocalPlayer.CustomProperties["team"]).GetComponent<user1_block_prev>().cnt
             - GameObject.Find("user" + PhotonNetwork.LocalPlayer.CustomProperties["team"]).GetComponent<user1_block_prev>().cnt_drop;
-        
+        score_pu = score;
         myScore.text = string.Format("Score : {0:D1}", score); //myScore.textmyScore
  
     }
