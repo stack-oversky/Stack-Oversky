@@ -51,6 +51,8 @@ public class Launcher : MonoBehaviourPunCallbacks
 
     public GameObject roomNameInputPanel;
     public TMP_InputField roomNameInputText;
+
+    public GameObject chatmanager;
     void Start()
     {
         CloseMenu();
@@ -194,6 +196,7 @@ public class Launcher : MonoBehaviourPunCallbacks
         roomPanel.SetActive(true);
         roomName.text = PhotonNetwork.CurrentRoom.Name;
         ListAllPlayer();
+        chatmanager.GetComponent<ChatManager0>().ChatLogReset();
     }
     public void JoinRoom(RoomInfo inputinfo)
     {
@@ -302,7 +305,12 @@ public class Launcher : MonoBehaviourPunCallbacks
             }
         }
     }
-
+    public int rTeamNum()   //√ﬂ∞°
+    {
+        Hashtable cp = PhotonNetwork.LocalPlayer.CustomProperties;
+        int num = cp["team"].GetHashCode();
+        return num;
+    }
 
     public void LeaveRoom()
     {
@@ -327,10 +335,12 @@ public class Launcher : MonoBehaviourPunCallbacks
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
         ListAllPlayer();
+        chatmanager.GetComponent<ChatManager0>().Broadcast(newPlayer.NickName + "¥‘¿Ã ¬¸∞°«œºÃΩ¿¥œ¥Ÿ");
     }
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
         ListAllPlayer();
+        chatmanager.GetComponent<ChatManager0>().Broadcast(otherPlayer.NickName + "¥‘¿Ã ≈¿Â«œºÃΩ¿¥œ¥Ÿ");
     }
     private void ListAllPlayer()
     {
