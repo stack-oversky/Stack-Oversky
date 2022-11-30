@@ -103,18 +103,18 @@ public class user1_block_prev : MonoBehaviourPunCallbacks
     {
         if (this.photonView.IsMine)
         {
-            Debug.Log("CB");
-            
+            //Debug.Log(score);
+            //Debug.Log(tmp);
             if (score != tmp && score > 7) //score
             {
                 Debug.Log("7>" + score);
-                Vector3 destination = new Vector3(0, 2.6f + (score - 7) * 0.7f, 0); //
+                Vector3 destination = new Vector3(this.transform.position.x, start.y+ (score - 7) * 0.7f, 0); //
                 this.transform.position = Vector3.MoveTowards(this.transform.position, destination, 10);
             }
             else if (score != tmp && score <= 7) //score
             {
                 Debug.Log("7<"+score);
-                Vector3 destination = new Vector3(0, 2.6f, 0); //
+                Vector3 destination = new Vector3(this.transform.position.x, start.y, 0); //
                 this.transform.position = Vector3.MoveTowards(this.transform.position, destination, 10);
             }
         }
@@ -144,8 +144,9 @@ public class user1_block_prev : MonoBehaviourPunCallbacks
             //CameraDown();
             timeCount();
             score = cnt - cnt_drop;
-            tmp = score;
             calBlockPosition();
+            tmp = score;
+            
         }
         
 
