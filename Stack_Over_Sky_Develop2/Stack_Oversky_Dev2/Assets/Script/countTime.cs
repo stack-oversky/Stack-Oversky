@@ -48,7 +48,7 @@ public class countTime : MonoBehaviour
     {
         sec += Time.deltaTime;
 
-        TimerText.text = string.Format("{0:D2} : {1:D2}", min, (int)sec);
+        TimerText.text = string.Format("Time : {0:D2}", 60-(int)sec);
 
         if ((int)sec > 59)
         {
