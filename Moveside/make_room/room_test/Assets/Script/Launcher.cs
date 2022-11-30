@@ -222,7 +222,7 @@ public class Launcher : MonoBehaviourPunCallbacks
         Hashtable cp2 = PhotonNetwork.CurrentRoom.CustomProperties;
         if (!cp["team"].Equals(1))
         {
-            if (cp2["team1"].Equals(2))
+            if (cp2["team1"].Equals(1))
             {
                 TMP_Text newText = Instantiate(roomNoticeText, roomNoticeText.transform.parent);
                 newText.text = "1∆¿¿Ã ∞°µÊ¬¸!";
@@ -243,7 +243,7 @@ public class Launcher : MonoBehaviourPunCallbacks
         Hashtable cp2 = PhotonNetwork.CurrentRoom.CustomProperties;
         if (!cp["team"].Equals(2))
         {
-            if (cp2["team2"].Equals(2))
+            if (cp2["team2"].Equals(1))
             {
                 TMP_Text newText = Instantiate(roomNoticeText, roomNoticeText.transform.parent);
                 newText.text = "2∆¿¿Ã ∞°µÊ¬¸!";
@@ -334,10 +334,7 @@ public class Launcher : MonoBehaviourPunCallbacks
             }
             
         }
-        if (
-            /*cp2["team1"].Equals(1) && cp2["team2"].Equals(1)*/ // ∞‘¿” Ω√¿€¡∂∞«
-            true
-            ) 
+        if (cp2["team1"].Equals(1) && cp2["team2"].Equals(1)) 
         {
             if (PhotonNetwork.IsMasterClient)
             {
