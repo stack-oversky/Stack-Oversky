@@ -192,7 +192,7 @@ public class GameManager : MonoBehaviour
         Vector3 posL = block_L.transform.position;
         Vector3 posR = block_R.transform.position;
 
-        if(Input.GetKeyDown(KeyCode.Space) && delta1 > spawnSpan)
+        if(Input.GetKeyDown(KeyCode.LeftControl) && delta1 > spawnSpan)
         {
             GameObject newBlock = Instantiate(blockPrefab) as GameObject;
             newBlock.transform.position = posL;
@@ -206,7 +206,7 @@ public class GameManager : MonoBehaviour
             delayDelta1 = 0f;
             blocks.Add(newBlock);
         }
-        if(Input.GetKeyDown(KeyCode.KeypadEnter) && delta2 > spawnSpan)
+        if(Input.GetKeyDown(KeyCode.RightControl) && delta2 > spawnSpan)
         {
             GameObject newBlock = Instantiate(blockPrefab2) as GameObject;
             newBlock.transform.position = posR;
