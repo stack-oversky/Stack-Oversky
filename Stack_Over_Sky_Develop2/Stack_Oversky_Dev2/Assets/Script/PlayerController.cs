@@ -39,10 +39,11 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                Debug.Log("Space");
+                //Debug.Log("Space");
                 //LocalPlayer team = 1
                 if (PhotonNetwork.LocalPlayer.CustomProperties["team"].Equals(1))
                 {
+                    //Debug.Log("RPC1");
                     //block1.GetComponent<user1_block>().BlockShoot();
                     BlockShoot(1);
                 }
@@ -68,7 +69,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
             if (Input.GetKeyDown(KeyCode.Q))
             {
-                Debug.Log("Q");
+                //Debug.Log("Q");
                 //LocalPlayer team = 1
                 if (PhotonNetwork.LocalPlayer.CustomProperties["team"].Equals(1))
                 {
@@ -92,6 +93,62 @@ public class PlayerController : MonoBehaviourPunCallbacks
                 {
                     //block2.GetComponent<user2_block>().BlockShoot();
                     BlockFast(4);
+                }
+            }
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                //Debug.Log("Q");
+                //LocalPlayer team = 1
+                if (PhotonNetwork.LocalPlayer.CustomProperties["team"].Equals(1))
+                {
+                    //block1.GetComponent<user1_block>().BlockShoot();
+                    BlockSlow(1);
+                }
+                //LocalPlayer team = 2
+                else if (PhotonNetwork.LocalPlayer.CustomProperties["team"].Equals(2))
+                {
+                    //block2.GetComponent<user2_block>().BlockShoot();
+                    BlockSlow(2);
+                }
+                //LocalPlayer team = 2
+                else if (PhotonNetwork.LocalPlayer.CustomProperties["team"].Equals(3))
+                {
+                    //block2.GetComponent<user2_block>().BlockShoot();
+                    BlockSlow(3);
+                }
+                //LocalPlayer team = 2
+                else if (PhotonNetwork.LocalPlayer.CustomProperties["team"].Equals(4))
+                {
+                    //block2.GetComponent<user2_block>().BlockShoot();
+                    BlockSlow(4);
+                }
+            }
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                //Debug.Log("Q");
+                //LocalPlayer team = 1
+                if (PhotonNetwork.LocalPlayer.CustomProperties["team"].Equals(1))
+                {
+                    //block1.GetComponent<user1_block>().BlockShoot();
+                    BlockDelete(1);
+                }
+                //LocalPlayer team = 2
+                else if (PhotonNetwork.LocalPlayer.CustomProperties["team"].Equals(2))
+                {
+                    //block2.GetComponent<user2_block>().BlockShoot();
+                    BlockDelete(2);
+                }
+                //LocalPlayer team = 2
+                else if (PhotonNetwork.LocalPlayer.CustomProperties["team"].Equals(3))
+                {
+                    //block2.GetComponent<user2_block>().BlockShoot();
+                    BlockDelete(3);
+                }
+                //LocalPlayer team = 2
+                else if (PhotonNetwork.LocalPlayer.CustomProperties["team"].Equals(4))
+                {
+                    //block2.GetComponent<user2_block>().BlockShoot();
+                    BlockDelete(4);
                 }
             }
         }
@@ -153,19 +210,20 @@ public class PlayerController : MonoBehaviourPunCallbacks
         //Debug.Log(block.gameObject.name);
         if (i == 1)
         {
-            block1.GetComponent<user1_block_prev>().BlockShoot();
+            //Debug.Log("RPC2");
+            block1.GetComponent<user1_block_prev>().BlockShoot(i);
         }
         else if (i == 2)
         {
-            block2.GetComponent<user1_block_prev>().BlockShoot();
+            block2.GetComponent<user1_block_prev>().BlockShoot(i);
         }
         else if (i == 3)
         {
-            block3.GetComponent<user1_block_prev>().BlockShoot();
+            block3.GetComponent<user1_block_prev>().BlockShoot(i);
         }
         else if (i == 4)
         {
-            block4.GetComponent<user1_block_prev>().BlockShoot();
+            block4.GetComponent<user1_block_prev>().BlockShoot(i);
         }
 
     }
@@ -189,6 +247,50 @@ public class PlayerController : MonoBehaviourPunCallbacks
         if (i != 4)
         {
             block4.GetComponent<user1_block_prev>().speed *= 1.1f;
+        }
+    }
+
+    public void BlockSlow(int i)
+    {
+
+        //Debug.Log(block.gameObject.name);
+        if (i == 1)
+        {
+            block1.GetComponent<user1_block_prev>().speed *= 0.9f;
+        }
+        else if (i == 2)
+        {
+            block2.GetComponent<user1_block_prev>().speed *= 0.9f;
+        }
+        else if(i == 3)
+        {
+            block3.GetComponent<user1_block_prev>().speed *= 0.9f;
+        }
+        else if (i == 4)
+        {
+            block4.GetComponent<user1_block_prev>().speed *= 0.9f;
+        }
+    }
+
+    public void BlockDelete(int i)
+    {
+
+        //Debug.Log(block.gameObject.name);
+        if (i == 1)
+        {
+            block1.GetComponent<user1_block_prev>().DestroyAllBlocks();
+        }
+        else if (i == 2)
+        {
+            block2.GetComponent<user1_block_prev>().DestroyAllBlocks();
+        }
+        else if (i == 3)
+        {
+            block3.GetComponent<user1_block_prev>().DestroyAllBlocks();
+        }
+        else if (i == 4)
+        {
+            block4.GetComponent<user1_block_prev>().DestroyAllBlocks();
         }
     }
 }

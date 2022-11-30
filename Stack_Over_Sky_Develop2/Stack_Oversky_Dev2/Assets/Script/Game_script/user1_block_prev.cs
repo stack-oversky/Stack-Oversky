@@ -27,17 +27,18 @@ public class user1_block_prev : MonoBehaviourPunCallbacks
 
     // Start is called before the first frame update
 
-    public void BlockShoot()
+    public void BlockShoot(int t)
     {
+        //Debug.Log("RPC3");
         //Create PhotonNetwork Object -> management with Photonview
-        
 
-
-        if (Input.GetKeyDown(KeyCode.Space) && delta > delayTimeBlockShoot)
+        if (Input.GetKeyDown(KeyCode.Space) && delta > delayTimeBlockShoot && PhotonNetwork.LocalPlayer.CustomProperties["team"].Equals(t))
         {
-
+            //Debug.Log("RPC4");
             GameObject block = PhotonNetwork.Instantiate("block(groom)", blockPosition.transform.position, Quaternion.identity, 0);
+            
             block.GetPhotonView().TransferOwnership(PhotonNetwork.LocalPlayer);
+            Debug.Log(block.GetPhotonView().Owner.CustomProperties["team"]);
             //rig2d.AddForce(new Vector2(0,speed), ForceMode2D.Force);
             cnt++;
             k = 0;
@@ -47,12 +48,12 @@ public class user1_block_prev : MonoBehaviourPunCallbacks
             block.transform.parent = blockContainer.transform;  //blockContainer
 
             
-            Debug.Log("key");
+            //Debug.Log("key");
 
             
             if (cnt > 7 && k == 0)
             {
-                Debug.Log(score);
+                //Debug.Log(score);
                 //this.transform.position += new Vector3(0, 1, 0);
                 for (int i = 0; i < 100; i++)
                 {
@@ -107,13 +108,13 @@ public class user1_block_prev : MonoBehaviourPunCallbacks
             //Debug.Log(tmp);
             if (score != tmp && score > 7) //score
             {
-                Debug.Log("7>" + score);
+                //Debug.Log("7>" + score);
                 Vector3 destination = new Vector3(this.transform.position.x, start.y+ (score - 7) * 0.7f, 0); //
                 this.transform.position = Vector3.MoveTowards(this.transform.position, destination, 10);
             }
             else if (score != tmp && score <= 7) //score
             {
-                Debug.Log("7<"+score);
+                //Debug.Log("7<"+score);
                 Vector3 destination = new Vector3(this.transform.position.x, start.y, 0); //
                 this.transform.position = Vector3.MoveTowards(this.transform.position, destination, 10);
             }
@@ -130,7 +131,7 @@ public class user1_block_prev : MonoBehaviourPunCallbacks
 
         //
 
-        GameObject.Find("user" + this.tag).GetPhotonView().TransferOwnership(PhotonNetwork.LocalPlayer);
+        GameObject.Find("user" + PhotonNetwork.LocalPlayer.CustomProperties["team"]).GetPhotonView().TransferOwnership(PhotonNetwork.LocalPlayer);
 
 
     }
@@ -171,6 +172,12 @@ public class user1_block_prev : MonoBehaviourPunCallbacks
     {
         var blocks = new List<GameObject>();
         foreach (Transform child in blockContainer.transform) blocks.Add(child.gameObject);
-        blocks.ForEach(child => Destroy(child));
+        blocks.ForEach(child => PhotonNetwork.Destroy(child));
+        
+        this.transform.position = start;
+
+        cnt = 0;
+        cnt_drop = 0;
+        cnt_drop_check = 1;
     }
 }
