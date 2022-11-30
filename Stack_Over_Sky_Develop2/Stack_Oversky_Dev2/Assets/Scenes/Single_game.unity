@@ -583,6 +583,7 @@ GameObject:
   m_Component:
   - component: {fileID: 176252483}
   - component: {fileID: 176252482}
+  - component: {fileID: 176252484}
   m_Layer: 0
   m_Name: PlayerController
   m_TagString: Untagged
@@ -622,6 +623,102 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &176252484
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 176252481}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 7f1a1e0191c494989b7c6f15f185493d, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &218269405
 GameObject:
   m_ObjectHideFlags: 0
@@ -844,6 +941,7 @@ GameObject:
   - component: {fileID: 451284553}
   - component: {fileID: 451284552}
   - component: {fileID: 451284551}
+  - component: {fileID: 451284555}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -941,6 +1039,29 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &451284555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 451284550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da0030b3a22044d8db30220f32df6965, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  user1Score: 0
+  player1: {fileID: 1387374904}
+  player2: {fileID: 929149751}
+  player3: {fileID: 100251150}
+  player4: {fileID: 913932571}
+  Max_Score: {fileID: 218269407}
+  score1: {fileID: 1840714719}
+  score2: {fileID: 1176367921}
+  score3: {fileID: 1598163717}
+  score4: {fileID: 1686035820}
+  maxUser: {fileID: 0}
 --- !u!1 &535827908
 GameObject:
   m_ObjectHideFlags: 0
@@ -1546,7 +1667,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &843332950
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2272,6 +2393,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myScore: {fileID: 1108926279}
+  score_pu: 0
 --- !u!114 &1108926279
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2671,6 +2793,7 @@ MonoBehaviour:
   cnt: 0
   cnt_drop: 0
   cnt_drop_check: 0
+  score: 0
   blockContainer: {fileID: 293942860}
 --- !u!50 &1176367924
 Rigidbody2D:
@@ -3799,6 +3922,7 @@ MonoBehaviour:
   cnt: 0
   cnt_drop: 0
   cnt_drop_check: 0
+  score: 0
   blockContainer: {fileID: 293942860}
 --- !u!50 &1598163720
 Rigidbody2D:
@@ -4013,6 +4137,7 @@ MonoBehaviour:
   cnt: 0
   cnt_drop: 0
   cnt_drop_check: 0
+  score: 0
   blockContainer: {fileID: 293942860}
 --- !u!50 &1686035823
 Rigidbody2D:
@@ -4678,6 +4803,7 @@ MonoBehaviour:
   cnt: 0
   cnt_drop: 0
   cnt_drop_check: 0
+  score: 0
   blockContainer: {fileID: 293942860}
 --- !u!50 &1840714723
 Rigidbody2D:

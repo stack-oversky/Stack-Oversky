@@ -32,8 +32,13 @@ public class PlayerController : MonoBehaviourPunCallbacks
     // Update is called once per frame
     void Update()
     {
+        //Debug.Log(block1.GetComponent<user1_block_prev>().cnt - block1.GetComponent<user1_block_prev>().cnt_drop);
+        //Debug.Log(block2.GetComponent<user1_block_prev>().cnt - block2.GetComponent<user1_block_prev>().cnt_drop);
+        //Debug.Log(block3.GetComponent<user1_block_prev>().cnt - block3.GetComponent<user1_block_prev>().cnt_drop);
+        //Debug.Log(block4.GetComponent<user1_block_prev>().cnt - block4.GetComponent<user1_block_prev>().cnt_drop);
+
         //Debug.Log(textField.isFocused);
-        if(textField.isFocused == false)
+        if (textField.isFocused == false)
         {
             //if Input Space Key -> RUN RPC Function
 
@@ -179,7 +184,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
         if (photonView.IsMine)
         {
             /*
-            // object 클릭시 함수 자세한건 squareScript에서
+            // object ?????? ???? ???????? squareScript????
             if (Input.GetMouseButtonDown(0))
             {
                 Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
