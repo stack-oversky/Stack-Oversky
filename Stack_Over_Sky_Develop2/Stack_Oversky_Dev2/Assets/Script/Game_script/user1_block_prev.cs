@@ -21,7 +21,7 @@ public class user1_block_prev : MonoBehaviourPunCallbacks
     GameObject block;
     int tmp;
     float delayTimeBlockShoot = 0.4f;
-    int score = 0;
+    public int score = 0;
     public GameObject blockContainer; //block prefab 
 
 
@@ -141,6 +141,7 @@ public class user1_block_prev : MonoBehaviourPunCallbacks
     {
         if (photonView.IsMine)
         {
+            photonView.RPC("saveScore", RpcTarget.All, score);
             BlockMove();
             //CameraDown();
             timeCount();
@@ -151,6 +152,13 @@ public class user1_block_prev : MonoBehaviourPunCallbacks
         }
         
 
+    }
+
+    [PunRPC]
+    public void saveScore(int remotescore)
+    {
+        score = remotescore;
+        Debug.Log(this.name + " : " + score);
     }
 
     /*

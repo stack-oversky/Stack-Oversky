@@ -12,6 +12,20 @@ public class Player1EndScore : MonoBehaviour
     public Text player2;
     public Text player3;
     public Text player4;
+    public Text Max_Score;
+    public GameObject score1;
+    public GameObject score2;
+    public GameObject score3;
+    public GameObject score4;
+
+    int s1;
+    int s2;
+    int s3;
+    int s4;
+
+    int maxScore;
+    public GameObject maxUser;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,24 +35,41 @@ public class Player1EndScore : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*
-        user1Score = GameObject.Find("user" + PhotonNetwork.LocalPlayer.CustomProperties["team"]).GetComponent<ScoreUpdate>().score_pu;
-        Debug.Log(PhotonNetwork.NickName);
-        if (PhotonNetwork.LocalPlayer.CustomProperties["team"] == "1")
+        s1 = score1.GetComponent<user1_block_prev>().score;
+        s2 = score2.GetComponent<user1_block_prev>().score;
+        s3 = score3.GetComponent<user1_block_prev>().score;
+        s4 = score4.GetComponent<user1_block_prev>().score;
+
+        player1.text = score1.GetComponent<user1_block_prev>().score.ToString();
+        player2.text = score2.GetComponent<user1_block_prev>().score.ToString();
+        player3.text = score3.GetComponent<user1_block_prev>().score.ToString();
+        player4.text = score4.GetComponent<user1_block_prev>().score.ToString();
+
+        
+        if(s1>=s2 && s1>= s3 && s1 >= s4)
         {
-            player1.text = string.Format(PhotonNetwork.LocalPlayer.NickName + "  Score : {0:D1}", user1Score);
+            maxScore = s1;
+            maxUser = score1;
         }
-        else if (PhotonNetwork.LocalPlayer.CustomProperties["team"] == "2")
+
+        else if (s1 >= s2 && s1 >= s3 && s1 >= s4)
         {
-            player2.text = string.Format(PhotonNetwork.LocalPlayer.NickName + "  Score : {0:D1}", user1Score);
+            maxScore = s2;
+            maxUser = score2;
         }
-        else if (PhotonNetwork.LocalPlayer.CustomProperties["team"] == "3")
+
+        else if (s1 >= s2 && s1 >= s3 && s1 >= s4)
         {
-            player3.text = string.Format(PhotonNetwork.LocalPlayer.NickName + "  Score : {0:D1}", user1Score);
+            maxScore = s3;
+            maxUser = score3;
         }
-        else if (PhotonNetwork.LocalPlayer.CustomProperties["team"] == "4")
+
+        else
         {
-            player4.text = string.Format(PhotonNetwork.LocalPlayer.NickName + "  Score : {0:D1}", user1Score);
-        }*/
+            maxScore = s4;
+            maxUser = score4;
+        }
+
+        Max_Score.text = maxUser.GetPhotonView().Owner.NickName + " : " + maxScore.ToString();
     }
 }

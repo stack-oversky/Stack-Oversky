@@ -32,10 +32,10 @@ public class PlayerController : MonoBehaviourPunCallbacks
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(block1.GetComponent<user1_block_prev>().cnt - block1.GetComponent<user1_block_prev>().cnt_drop);
-        Debug.Log(block2.GetComponent<user1_block_prev>().cnt - block2.GetComponent<user1_block_prev>().cnt_drop);
-        Debug.Log(block3.GetComponent<user1_block_prev>().cnt - block3.GetComponent<user1_block_prev>().cnt_drop);
-        Debug.Log(block4.GetComponent<user1_block_prev>().cnt - block4.GetComponent<user1_block_prev>().cnt_drop);
+        //Debug.Log(block1.GetComponent<user1_block_prev>().cnt - block1.GetComponent<user1_block_prev>().cnt_drop);
+        //Debug.Log(block2.GetComponent<user1_block_prev>().cnt - block2.GetComponent<user1_block_prev>().cnt_drop);
+        //Debug.Log(block3.GetComponent<user1_block_prev>().cnt - block3.GetComponent<user1_block_prev>().cnt_drop);
+        //Debug.Log(block4.GetComponent<user1_block_prev>().cnt - block4.GetComponent<user1_block_prev>().cnt_drop);
 
         //Debug.Log(textField.isFocused);
         if (textField.isFocused == false)
