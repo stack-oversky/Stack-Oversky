@@ -64,22 +64,6 @@ public class GamePlayerController : MonoBehaviourPunCallbacks
             {
                 UseItemPlayer2();
             }
-            if (Input.GetKeyDown(KeyCode.Q))
-            {
-                AttackStop();
-            }
-            else if (Input.GetKeyDown(KeyCode.W))
-            {
-                AttackFast();
-            }
-            else if (Input.GetKeyDown(KeyCode.E))
-            {
-                AttackBig();
-            }
-            else if (Input.GetKeyDown(KeyCode.R))
-            {
-                StartCoroutine(DefenseSlow());
-            }
             SelectPlayer();
             SetItem();
             if(isGameRun) SaveScore();
