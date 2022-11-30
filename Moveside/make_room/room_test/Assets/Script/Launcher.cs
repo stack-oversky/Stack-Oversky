@@ -56,6 +56,7 @@ public class Launcher : MonoBehaviourPunCallbacks
         loadingPanel.SetActive(true);
         loadingText.text = "네트워크 연결중";
         PhotonNetwork.ConnectUsingSettings();
+        Screen.SetResolution(1200, 800, false);
     }
 
     // 네트워크 연결 성공시 실행
@@ -257,7 +258,11 @@ public class Launcher : MonoBehaviourPunCallbacks
             }
         }
     }
-
+    public void LeaveRoomList()
+    {
+        CloseMenu();
+        menubutton.gameObject.SetActive(true);
+    }
 
     public void LeaveRoom()
     {
