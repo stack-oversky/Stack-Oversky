@@ -10,22 +10,40 @@ public class countTime : MonoBehaviour
     int min=0;
     [SerializeField]
     public Text TimerText;
+    Transform endpanel;
 
 
     void Start()
     {
+        endpanel = GameObject.Find("gameoverparents").transform.Find("GameOverPanel");
         //myScore = GameObject.Find("user1_block").GetComponent<Text>();
     }
 
     void Update()
     { 
-        Timer();
         
+        if (Nowmin() == 1)
+        {
+            GameObject.Find("gameoverparents").transform.Find("GameOverPanel").gameObject.SetActive(true);
+           
+        }
+        else
+        {
+            Timer();
+        }
+
+
     }
 
-   
 
-    //게임 ?�작 ???�간 카운???�는 ??
+   int Nowmin()
+    {
+        return (int)min;
+    }
+       
+
+
+    //?????? ????? ??????? ????????????? ??
     void Timer()
     {
         sec += Time.deltaTime;
