@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - block
+  - make_block
+  - Ground
+  - Add
+  - Drop
   layers:
   - Default
   - TransparentFX
