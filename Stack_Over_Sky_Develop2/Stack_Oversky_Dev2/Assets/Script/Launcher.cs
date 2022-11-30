@@ -405,7 +405,7 @@ public class Launcher : MonoBehaviourPunCallbacks
             }
             
         }
-        if (cp2["team1"].Equals(1) /*&& cp2["team2"].Equals(1) /*&& cp2["team3"].Equals(1) && cp2["team4"].Equals(1)*/) // 게임 시작조건
+        if (true/*cp2["team1"].Equals(1) /*&& cp2["team2"].Equals(1) /*&& cp2["team3"].Equals(1) && cp2["team4"].Equals(1)*/) // 게임 시작조건
         {
             if (PhotonNetwork.IsMasterClient)
             {

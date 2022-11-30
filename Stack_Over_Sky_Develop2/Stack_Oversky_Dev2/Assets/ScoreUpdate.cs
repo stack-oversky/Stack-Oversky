@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,8 +25,9 @@ public class ScoreUpdate : MonoBehaviour
 
     void scoreUpdate()
     {
-        score = GameObject.Find("user1").GetComponent<user1_block_prev>().cnt
-            - GameObject.Find("user1").GetComponent<user1_block_prev>().cnt_drop;
+
+        score = GameObject.Find("user" + PhotonNetwork.LocalPlayer.CustomProperties["team"]).GetComponent<user1_block_prev>().cnt
+            - GameObject.Find("user" + PhotonNetwork.LocalPlayer.CustomProperties["team"]).GetComponent<user1_block_prev>().cnt_drop;
         
         myScore.text = string.Format("Score : {0:D1}", score); //myScore.textmyScore
  

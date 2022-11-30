@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -30,7 +31,7 @@ public class user : MonoBehaviour
     {
         if (collision.gameObject.name == "rm")
         {
-            GameObject.Find("user1").GetComponent<user1_block_prev>().cnt_drop++;
+            GameObject.Find("user" + gameObject.GetPhotonView().Owner.CustomProperties["team"]).GetComponent<user1_block_prev>().cnt_drop++;
             Destroy(gameObject);
         }
 
