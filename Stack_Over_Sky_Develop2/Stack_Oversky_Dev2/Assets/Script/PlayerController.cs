@@ -4,6 +4,7 @@ using UnityEngine;
 using Photon.Pun;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviourPunCallbacks
 {
@@ -13,6 +14,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
     public GameObject block2;
     public GameObject block3;
     public GameObject block4;
+    public TMP_InputField textField;
 
     private RaycastHit2D hit;
 
@@ -23,71 +25,76 @@ public class PlayerController : MonoBehaviourPunCallbacks
     {
         camera = Camera.main;
         PV = photonView;
-        
+        //isChat = false;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        //if Input Space Key -> RUN RPC Function
-        if (Input.GetKeyDown(KeyCode.Space))
+        //Debug.Log(textField.isFocused);
+        if(textField.isFocused == false)
         {
-            Debug.Log("Space");
-            //LocalPlayer team = 1
-            if (PhotonNetwork.LocalPlayer.CustomProperties["team"].Equals(1))
+            //if Input Space Key -> RUN RPC Function
+
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-                //block1.GetComponent<user1_block>().BlockShoot();
-                BlockShoot(1);
+                Debug.Log("Space");
+                //LocalPlayer team = 1
+                if (PhotonNetwork.LocalPlayer.CustomProperties["team"].Equals(1))
+                {
+                    //block1.GetComponent<user1_block>().BlockShoot();
+                    BlockShoot(1);
+                }
+                //LocalPlayer team = 2
+                else if (PhotonNetwork.LocalPlayer.CustomProperties["team"].Equals(2))
+                {
+                    //block2.GetComponent<user2_block>().BlockShoot();
+                    BlockShoot(2);
+                }
+                //LocalPlayer team = 2
+                else if (PhotonNetwork.LocalPlayer.CustomProperties["team"].Equals(3))
+                {
+                    //block2.GetComponent<user2_block>().BlockShoot();
+                    BlockShoot(3);
+                }
+                //LocalPlayer team = 2
+                else if (PhotonNetwork.LocalPlayer.CustomProperties["team"].Equals(4))
+                {
+                    //block2.GetComponent<user2_block>().BlockShoot();
+                    BlockShoot(4);
+                }
             }
-            //LocalPlayer team = 2
-            else if (PhotonNetwork.LocalPlayer.CustomProperties["team"].Equals(2))
+
+            if (Input.GetKeyDown(KeyCode.Q))
             {
-                //block2.GetComponent<user2_block>().BlockShoot();
-                BlockShoot(2);
-            }
-            //LocalPlayer team = 2
-            else if (PhotonNetwork.LocalPlayer.CustomProperties["team"].Equals(3))
-            {
-                //block2.GetComponent<user2_block>().BlockShoot();
-                BlockShoot(3);
-            }
-            //LocalPlayer team = 2
-            else if (PhotonNetwork.LocalPlayer.CustomProperties["team"].Equals(4))
-            {
-                //block2.GetComponent<user2_block>().BlockShoot();
-                BlockShoot(4);
+                Debug.Log("Q");
+                //LocalPlayer team = 1
+                if (PhotonNetwork.LocalPlayer.CustomProperties["team"].Equals(1))
+                {
+                    //block1.GetComponent<user1_block>().BlockShoot();
+                    BlockFast(1);
+                }
+                //LocalPlayer team = 2
+                else if (PhotonNetwork.LocalPlayer.CustomProperties["team"].Equals(2))
+                {
+                    //block2.GetComponent<user2_block>().BlockShoot();
+                    BlockFast(2);
+                }
+                //LocalPlayer team = 2
+                else if (PhotonNetwork.LocalPlayer.CustomProperties["team"].Equals(3))
+                {
+                    //block2.GetComponent<user2_block>().BlockShoot();
+                    BlockFast(3);
+                }
+                //LocalPlayer team = 2
+                else if (PhotonNetwork.LocalPlayer.CustomProperties["team"].Equals(4))
+                {
+                    //block2.GetComponent<user2_block>().BlockShoot();
+                    BlockFast(4);
+                }
             }
         }
-
-        if(Input.GetKeyDown(KeyCode.Q)) 
-        {
-            Debug.Log("Q");
-            //LocalPlayer team = 1
-            if (PhotonNetwork.LocalPlayer.CustomProperties["team"].Equals(1))
-            {
-                //block1.GetComponent<user1_block>().BlockShoot();
-                BlockFast(1);
-            }
-            //LocalPlayer team = 2
-            else if (PhotonNetwork.LocalPlayer.CustomProperties["team"].Equals(2))
-            {
-                //block2.GetComponent<user2_block>().BlockShoot();
-                BlockFast(2);
-            }
-            //LocalPlayer team = 2
-            else if (PhotonNetwork.LocalPlayer.CustomProperties["team"].Equals(3))
-            {
-                //block2.GetComponent<user2_block>().BlockShoot();
-                BlockFast(3);
-            }
-            //LocalPlayer team = 2
-            else if (PhotonNetwork.LocalPlayer.CustomProperties["team"].Equals(4))
-            {
-                //block2.GetComponent<user2_block>().BlockShoot();
-                BlockFast(4);
-            }
-        }
-
 
         //DummyGame Key Function
         /*
