@@ -1056,6 +1056,12 @@ MonoBehaviour:
   player2: {fileID: 929149751}
   player3: {fileID: 100251150}
   player4: {fileID: 913932571}
+  Max_Score: {fileID: 218269407}
+  score1: {fileID: 1840714719}
+  score2: {fileID: 1176367921}
+  score3: {fileID: 1598163717}
+  score4: {fileID: 1686035820}
+  maxUser: {fileID: 0}
 --- !u!1 &535827908
 GameObject:
   m_ObjectHideFlags: 0
@@ -2787,6 +2793,7 @@ MonoBehaviour:
   cnt: 0
   cnt_drop: 0
   cnt_drop_check: 0
+  score: 0
   blockContainer: {fileID: 293942860}
 --- !u!50 &1176367924
 Rigidbody2D:
@@ -3915,6 +3922,7 @@ MonoBehaviour:
   cnt: 0
   cnt_drop: 0
   cnt_drop_check: 0
+  score: 0
   blockContainer: {fileID: 293942860}
 --- !u!50 &1598163720
 Rigidbody2D:
@@ -4129,6 +4137,7 @@ MonoBehaviour:
   cnt: 0
   cnt_drop: 0
   cnt_drop_check: 0
+  score: 0
   blockContainer: {fileID: 293942860}
 --- !u!50 &1686035823
 Rigidbody2D:
@@ -4794,6 +4803,7 @@ MonoBehaviour:
   cnt: 0
   cnt_drop: 0
   cnt_drop_check: 0
+  score: 0
   blockContainer: {fileID: 293942860}
 --- !u!50 &1840714723
 Rigidbody2D:
