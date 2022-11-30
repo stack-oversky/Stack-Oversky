@@ -12,7 +12,7 @@ public class user1_block_prev : MonoBehaviourPunCallbacks
     public Vector3 start;
     public float move = 0.1f;
     public float speed = 0.05f;
-    public float up = 10;
+    public float up = 1;
     int k = 1;
     public int cnt;
     public int cnt_drop;
@@ -30,26 +30,49 @@ public class user1_block_prev : MonoBehaviourPunCallbacks
     public void BlockShoot()
     {
         //Create PhotonNetwork Object -> management with Photonview
-        GameObject block = PhotonNetwork.Instantiate("block(groom)", blockPosition.transform.position, Quaternion.identity, 0);
-        block.GetPhotonView().TransferOwnership(PhotonNetwork.LocalPlayer);
+        
 
 
         if (Input.GetKeyDown(KeyCode.Space) && delta > delayTimeBlockShoot)
         {
+
+            GameObject block = PhotonNetwork.Instantiate("block(groom)", blockPosition.transform.position, Quaternion.identity, 0);
+            block.GetPhotonView().TransferOwnership(PhotonNetwork.LocalPlayer);
             //rig2d.AddForce(new Vector2(0,speed), ForceMode2D.Force);
-            cnt = cnt + 1;
+            cnt++;
             k = 0;
             block.transform.position = blockPosition.transform.position;
 
             block.name = "block num : " + cnt;
             block.transform.parent = blockContainer.transform;  //blockContainer
 
+            
+            Debug.Log("key");
+
+            
+            if (cnt > 7 && k == 0)
+            {
+                Debug.Log(score);
+                //this.transform.position += new Vector3(0, 1, 0);
+                for (int i = 0; i < 100; i++)
+                {
+                    //Debug.Log(score);
+                    this.transform.position += new Vector3(0, up * Time.deltaTime, 0);
+                }
+                k = 0;
+
+                //rig2d.AddForce(new Vector2(start.x,1), ForceMode2D.Force);
+
+            }
+            
             delta = 0f;
+
         }
     }
 
     public void BlockMove()
     {
+        //Debug.Log("Move" + score);
         if (this.photonView.IsMine)
         {
             {
@@ -63,6 +86,7 @@ public class user1_block_prev : MonoBehaviourPunCallbacks
     }
         void timeCount()
         {
+            //Debug.Log("time " + score);
             delta += Time.deltaTime;
         }
 
@@ -77,15 +101,19 @@ public class user1_block_prev : MonoBehaviourPunCallbacks
 
     private void calBlockPosition()
     {
-        if (photonView.IsMine)
+        if (this.photonView.IsMine)
         {
+            Debug.Log("CB");
+            
             if (score != tmp && score > 7) //score
             {
+                Debug.Log("7>" + score);
                 Vector3 destination = new Vector3(0, 2.6f + (score - 7) * 0.7f, 0); //
                 this.transform.position = Vector3.MoveTowards(this.transform.position, destination, 10);
             }
-            if (score != tmp && score <= 7) //score
+            else if (score != tmp && score <= 7) //score
             {
+                Debug.Log("7<"+score);
                 Vector3 destination = new Vector3(0, 2.6f, 0); //
                 this.transform.position = Vector3.MoveTowards(this.transform.position, destination, 10);
             }
@@ -110,16 +138,17 @@ public class user1_block_prev : MonoBehaviourPunCallbacks
     // Update is called once per frame
     void Update()
     {
-        if (this.photonView.IsMine)
+        if (photonView.IsMine)
         {
             BlockMove();
             //CameraDown();
+            timeCount();
+            score = cnt - cnt_drop;
+            tmp = score;
             calBlockPosition();
         }
-        timeCount();
-        score = cnt - cnt_drop;
-        tmp = score;
-            
+        
+
     }
 
     /*
@@ -136,4 +165,11 @@ public class user1_block_prev : MonoBehaviourPunCallbacks
         }
     }
     */
+
+    public void DestroyAllBlocks()
+    {
+        var blocks = new List<GameObject>();
+        foreach (Transform child in blockContainer.transform) blocks.Add(child.gameObject);
+        blocks.ForEach(child => Destroy(child));
+    }
 }

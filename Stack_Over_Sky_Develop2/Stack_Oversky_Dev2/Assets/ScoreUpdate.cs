@@ -28,6 +28,7 @@ public class ScoreUpdate : MonoBehaviour
             - GameObject.Find("user1").GetComponent<user1_block_prev>().cnt_drop;
         
         myScore.text = string.Format("Score : {0:D1}", score); //myScore.textmyScore
+ 
     }
 
 }

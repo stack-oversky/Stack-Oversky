@@ -14,14 +14,14 @@ public class user1_block : MonoBehaviour
     Rigidbody2D rig2d;
     int k = 1;
     GameObject block;
-    public GameObject blockContainer; //block prefab 저장 및 관리하는 변수
+    public GameObject blockContainer; //block prefab ?�??�?관리하??변??
     public int cnt;
     public int cnt_drop;
     public int cnt_drop_check;
 
     int score = 0;
     int tmp;
-    //스페이스바 시간 지연
+    //?�페?�스�??�간 지??
     float delta;
     float delayTimeBlockShoot = 0.4f;
 
@@ -37,7 +37,7 @@ public class user1_block : MonoBehaviour
             block.transform.position = blockPosition.transform.position;
 
             block.name = "block num : " + cnt;
-            block.transform.parent = blockContainer.transform;  //blockContainer에 블록 프리팹 저
+            block.transform.parent = blockContainer.transform;  //blockContainer??블록 ?�리???�
 
             delta = 0f;
         }
@@ -49,7 +49,7 @@ public class user1_block : MonoBehaviour
         }
 
 
-        //if (cnt > 7 && k == 0)  //블록이 7개 이상 생성 된 이후 블록이 생성될 때마다
+        //if (cnt > 7 && k == 0)  //블록??7�??�상 ?�성 ???�후 블록???�성???�마??
         //{
         //    //this.transform.position += new Vector3(0, 1, 0);
         //    //for (int i = 0; i < 100; i++)
@@ -82,12 +82,13 @@ public class user1_block : MonoBehaviour
       
         if (score != tmp &&score>7) //score가 바뀌면
         {
-            Vector3 destination = new Vector3(0, 2.6f+ (score - 7) * 0.7f, 0); //이 위치로 이동
+            Vector3 destination = new Vector3(0, 2.6f+ (score - 7) * 0.7f, 0); //???�치�??�동
             this.transform.position = Vector3.MoveTowards(this.transform.position, destination, 10);
+            //Debug.Log(user1_block)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
         }
         if(score!=tmp && score <= 7) //score가 바뀌면
         {
-            Vector3 destination = new Vector3(0, 2.6f, 0); //고정된 위치로 이
+            Vector3 destination = new Vector3(0, 2.6f, 0); //고정???�치�???
             this.transform.position = Vector3.MoveTowards(this.transform.position, destination, 10);
         }
     }
@@ -109,6 +110,6 @@ public class user1_block : MonoBehaviour
         timeCount();
         score = cnt - cnt_drop;
         calBlockPosition();
-        tmp = score; //score값이 변화가 있는지 확인하기 위한 변수
+        tmp = score; //score값이 변?��? ?�는지 ?�인?�기 ?�한 변??
     }
 }

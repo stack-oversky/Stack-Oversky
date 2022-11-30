@@ -6,8 +6,6 @@ using UnityEngine.UI;
 public class countTime : MonoBehaviour
 {
     
-
-    //게임시작 후 시간 카운트 변수
     float sec;
     int min=0;
     [SerializeField]
@@ -27,7 +25,7 @@ public class countTime : MonoBehaviour
 
    
 
-    //게임 시작 후 시간 카운트 하는 함
+    //게임 ?�작 ???�간 카운???�는 ??
     void Timer()
     {
         sec += Time.deltaTime;
