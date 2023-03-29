@@ -1,6 +1,9 @@
 # Stack-Oversky
 Stack-Oversky는 2 vs 2 협동 경쟁 탑쌓기 게임입니다.
 
+## 개발기간
+2022.09 ~ 2022.11
+
 ## 팀원
 * 서버
   - 17011500 이동엽
@@ -15,7 +18,7 @@ Stack-Oversky는 2 vs 2 협동 경쟁 탑쌓기 게임입니다.
 ## 기술스택
 * Launguage : C#
 * Game Engine : Unity
-* Server Engine : PhotonServer
+* Framework : PhotonServer
 ## 기획
 * 2018년 Stack_Tower 게임을 재구성해서 멀티 탑쌓기 게임을 제작 
 (https://github.com/2018-Interface-Programming-Exhibition/5team-Stack_Tower)
@@ -34,5 +37,9 @@ Stack-Oversky는 2 vs 2 협동 경쟁 탑쌓기 게임입니다.
 * 11월
   - 아이템 기능과 같은 부가적인 기능 추가
   - 게임 테스트
+ ## 게임 설명
+ <img width="80%" src="https://user-images.githubusercontent.com/35293542/226273520-50fc6aae-7d1e-42db-aebd-61506832b2d3.jpg"/>
+ 
+  
   ## 참고 자료
 https://github.com/stack-oversky/Stack-Oversky/tree/main/Docs#readme
