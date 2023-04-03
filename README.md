@@ -25,7 +25,7 @@ Stack-Oversky는 2 vs 2 협동 경쟁 탑쌓기 게임입니다.
 ④게임 타이머<br>
 ⑤현재 점수<br>
 ⑥상대 플레이어의 블럭상태<br>
- <img width="80%" src="https://user-images.githubusercontent.com/35293542/226273520-50fc6aae-7d1e-42db-aebd-61506832b2d3.jpg"/>
+ <img width="80%" src="https://user-images.githubusercontent.com/35293542/229490635-3854e98f-c97f-44cd-a5a0-0440831c36d5.png"/>
 
 ## 프로젝트
 ### 팀원
