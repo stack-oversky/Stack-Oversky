@@ -2,7 +2,6 @@
 Stack-Oversky는 2 vs 2 협동 경쟁 탑쌓기 게임입니다.
 
 ## 게임 플레이
-***
 ### 방생성
  <img width="50%" src="https://user-images.githubusercontent.com/35293542/229483031-98fb5a32-c812-4343-a880-e53a3bd4d4ee.png"/>
 게임 시작 전 닉네임 설정
